@@ -20,7 +20,7 @@ export default function Hero() {
       {/* TITLE (OVERLAPPING RED + IMAGE) */}
       <div className="absolute top-[40px] w-full text-center text-white font-serif text-3xl z-30">
         Goutham Photography
-        <span className="absolute right-10 text-xl top-1/2 -translate-y-1/2">
+        <span className="absolute right-10 text-xl top-1 -translate-y-1/2">
           Contact
         </span>
       </div>
