@@ -43,7 +43,7 @@ export default function Hero() {
       <div className="absolute top-0 w-full h-[70px] bg-[#7a0000] z-10" />
 
       {/* TITLE (RANDOM LETTER ANIMATION) */}
-      <AnimatedTitle />
+      <AnimatedTitle loaded={loaded}/>
 
       {/* TEXT OVERLAY */}
       <HeroText loaded={loaded} />
@@ -55,7 +55,7 @@ export default function Hero() {
   );
 }
 
-function AnimatedTitle() {
+function AnimatedTitle({ loaded }: { loaded: boolean }) {
   const text = "Goutham Photography";
 
   // Pre-generate random delays (IMPORTANT: prevents re-random on re-render)
@@ -89,9 +89,14 @@ function AnimatedTitle() {
       ))}
 
       {/* CONTACT */}
-      <span className="absolute right-10 text-xl top-1 -translate-y-1/2">
+      <motion.span
+        initial={{ opacity: 0, filter: "blur(8px)" }}
+        animate={loaded ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+        className="absolute right-10 text-xl top-1 -translate-y-1/2"
+      >
         Contact
-      </span>
+      </motion.span>
     </div>
   );
 }
