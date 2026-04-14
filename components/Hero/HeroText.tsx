@@ -22,13 +22,15 @@ export default function HeroText({ loaded }: { loaded: boolean }) {
         <img
           src="/images/through-my.png"
           alt="Through My"
-          className="
+          className={`
             absolute
             left-1/2 top-[56%]
             -translate-x-1/2 -translate-y-1/2
             w-[1260px]
             z-30
-          "
+            transition-all duration-1000
+            ${loaded ? "opacity-100" : "opacity-0"}
+          `}
         />
 
       </div>
