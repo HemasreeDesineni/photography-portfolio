@@ -58,29 +58,37 @@ export default function Hero() {
 function AnimatedTitle() {
   const text = "Goutham Photography";
 
+  // Pre-generate random delays (IMPORTANT: prevents re-random on re-render)
+  const delays = text.split("").map(() => 1.2 + Math.random() * 0.8);
+
   return (
     <div className="absolute top-[45px] w-full text-center text-white font-serif text-4xl z-30 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
 
-      {text.split("").map((char, i) => {
-        const randomDelay = 1.2 + Math.random() * 0.8; // 🔥 RANDOM
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          style={{ display: "inline-block" }} // IMPORTANT
+          initial={{
+            opacity: 0,
+            x: -30,              // 👈 start from LEFT (more visible now)
+            filter: "blur(12px)" // 👈 strong blur at start
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            filter: "blur(0px)"
+          }}
+          transition={{
+            delay: delays[i],    // 👈 RANDOM order preserved
+            duration: 0.9,
+            ease: [0.25, 0.8, 0.25, 1] // 👈 smooth cinematic ease
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
 
-        return (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: randomDelay,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
-            {char}
-          </motion.span>
-        );
-      })}
-
-      {/* CONTACT (no animation shift) */}
+      {/* CONTACT */}
       <span className="absolute right-10 text-xl top-1 -translate-y-1/2">
         Contact
       </span>
