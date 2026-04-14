@@ -93,7 +93,7 @@ function AnimatedTitle({ loaded }: { loaded: boolean }) {
         initial={{ opacity: 0, filter: "blur(8px)" }}
         animate={loaded ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-        className="absolute right-10 text-xl top-1 -translate-y-1/2"
+        className="absolute right-10 text-xl top-[-15px]"
       >
         Contact
       </motion.span>
