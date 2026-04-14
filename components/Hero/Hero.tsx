@@ -15,10 +15,10 @@ export default function Hero() {
       />
 
       {/* TOP RED STRIP */}
-      <div className="absolute top-0 w-full h-[80px] bg-[#7a0000] z-10" />
+      <div className="absolute top-0 w-full h-[70px] bg-[#7a0000] z-10" />
 
       {/* TITLE (OVERLAPPING RED + IMAGE) */}
-      <div className="absolute top-[40px] w-full text-center text-white font-serif text-3xl z-30">
+      <div className="absolute top-[45px] w-full text-center text-white font-serif text-4xl z-30">
         Goutham Photography
         <span className="absolute right-10 text-xl top-1 -translate-y-1/2">
           Contact
