@@ -5,12 +5,6 @@ export default function Hero() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
 
-      {/* TOP RED BAR (Navbar) */}
-      <div className="absolute top-0 w-full h-[70px] bg-[#7a0000] flex items-center justify-center text-white font-serif text-3xl z-20">
-        Goutham Photography
-        <div className="absolute right-10 text-xl">Contact</div>
-      </div>
-
       {/* BACKGROUND IMAGE */}
       <Image
         src="/images/hero-bg.jpg"
@@ -20,11 +14,22 @@ export default function Hero() {
         priority
       />
 
+      {/* TOP RED STRIP */}
+      <div className="absolute top-0 w-full h-[80px] bg-[#7a0000] z-10" />
+
+      {/* TITLE (OVERLAPPING RED + IMAGE) */}
+      <div className="absolute top-[40px] w-full text-center text-white font-serif text-3xl z-30">
+        Goutham Photography
+        <span className="absolute right-10 text-xl top-1/2 -translate-y-1/2">
+          Contact
+        </span>
+      </div>
+
       {/* TEXT OVERLAY */}
       <HeroText loaded={true} />
 
-      {/* BOTTOM RED BAR */}
-      <div className="absolute bottom-0 w-full h-[50px] bg-[#7a0000] z-20" />
+      {/* BOTTOM RED STRIP */}
+      <div className="absolute bottom-0 w-full h-[60px] bg-[#7a0000] z-10" />
 
     </div>
   );
