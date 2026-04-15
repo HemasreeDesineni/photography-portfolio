@@ -53,10 +53,10 @@ export default function Section2() {
       </div>
 
       {/* CONTENT */}
-      <motion.div className="absolute inset-0 z-50">
+      <motion.div className="absolute inset-0 z-50 pointer-events-none">
 
-        {/* TITLE */}
-        <div className="absolute top-[-1px] left-1/2 -translate-x-1/2">
+        {/* TITLE (ON TOP) */}
+        <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-30">
           <Image
             src="/images/page2-title.png"
             alt="title"
@@ -68,8 +68,8 @@ export default function Section2() {
           />
         </div>
 
-        {/* I COMPOSE */}
-        <div className="absolute top-[-11px] left-1/2 -translate-x-1/2">
+        {/* I COMPOSE (BEHIND TITLE) */}
+        <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 z-20">
           <Image
             src="/images/page2-icompose-text.png"
             alt="compose"
@@ -82,7 +82,7 @@ export default function Section2() {
         </div>
 
         {/* WHITE TEXT */}
-        <div className="absolute top-[20px] left-1/2 -translate-x-1/2">
+        <div className="absolute top-[20px] left-1/2 -translate-x-1/2 z-10">
           <Image
             src="/images/page2-white-text.png"
             alt="text"
