@@ -9,11 +9,12 @@ export default function Hero() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoaded(true), 400);
+    const timer = setTimeout(() => setLoaded(true), 400);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden">
 
       {/* BACKGROUND IMAGE (blur → clear) */}
       <motion.div
@@ -43,7 +44,7 @@ export default function Hero() {
       <div className="absolute top-0 w-full h-[70px] bg-[#7a0000] z-10" />
 
       {/* TITLE (RANDOM LETTER ANIMATION) */}
-      <AnimatedTitle loaded={loaded}/>
+      <AnimatedTitle loaded={loaded} />
 
       {/* TEXT OVERLAY */}
       <HeroText loaded={loaded} />
@@ -51,14 +52,14 @@ export default function Hero() {
       {/* BOTTOM RED STRIP */}
       <div className="absolute bottom-0 w-full h-[60px] bg-[#7a0000] z-10" />
 
-    </div>
+    </section>
   );
 }
 
 function AnimatedTitle({ loaded }: { loaded: boolean }) {
   const text = "Goutham Photography";
 
-  // Pre-generate random delays (IMPORTANT: prevents re-random on re-render)
+  // Pre-generate random delays (prevents re-random on re-render)
   const delays = text.split("").map(() => 1.2 + Math.random() * 0.8);
 
   return (
@@ -67,21 +68,21 @@ function AnimatedTitle({ loaded }: { loaded: boolean }) {
       {text.split("").map((char, i) => (
         <motion.span
           key={i}
-          style={{ display: "inline-block" }} // IMPORTANT
+          style={{ display: "inline-block" }}
           initial={{
             opacity: 0,
-            x: -30,              // 👈 start from LEFT (more visible now)
-            filter: "blur(12px)" // 👈 strong blur at start
+            x: -30,
+            filter: "blur(12px)",
           }}
           animate={{
             opacity: 1,
             x: 0,
-            filter: "blur(0px)"
+            filter: "blur(0px)",
           }}
           transition={{
-            delay: delays[i],    // 👈 RANDOM order preserved
+            delay: delays[i],
             duration: 0.9,
-            ease: [0.25, 0.8, 0.25, 1] // 👈 smooth cinematic ease
+            ease: [0.25, 0.8, 0.25, 1],
           }}
         >
           {char === " " ? "\u00A0" : char}
@@ -90,7 +91,7 @@ function AnimatedTitle({ loaded }: { loaded: boolean }) {
 
       {/* CONTACT */}
       <motion.span
-        initial={{ opacity: 0, filter: "blur(8px)" }}
+        initial={{ opacity: 0, filter: "blur(8px)", y: 10 }}
         animate={loaded ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
         className="absolute right-10 text-xl top-[-15px]"

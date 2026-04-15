@@ -14,7 +14,7 @@ const inter = Inter({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${inter.variable}`}>
+      <body className={`${playfair.variable} ${inter.variable} bg-black text-white`}>
         {children}
       </body>
     </html>
