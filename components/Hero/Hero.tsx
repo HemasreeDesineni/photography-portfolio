@@ -2,11 +2,21 @@
 
 import Image from "next/image";
 import HeroText from "./HeroText";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  // 🎯 Smooth fade out on scroll
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 400);
@@ -14,9 +24,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <motion.section
+      ref={ref}
+      style={{ opacity, scale }}
+      className="relative w-full h-screen overflow-hidden"
+    >
 
-      {/* BACKGROUND IMAGE (blur → clear) */}
+      {/* BACKGROUND */}
       <motion.div
         initial={{ filter: "blur(20px)", scale: 1.05 }}
         animate={loaded ? { filter: "blur(0px)", scale: 1 } : {}}
@@ -32,7 +46,7 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* RED OVERLAY (fade out) */}
+      {/* RED OVERLAY */}
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
@@ -40,26 +54,24 @@ export default function Hero() {
         className="absolute inset-0 bg-[#7a0000] z-20"
       />
 
-      {/* TOP RED STRIP */}
+      {/* TOP STRIP */}
       <div className="absolute top-0 w-full h-[70px] bg-[#7a0000] z-10" />
 
-      {/* TITLE (RANDOM LETTER ANIMATION) */}
       <AnimatedTitle loaded={loaded} />
 
-      {/* TEXT OVERLAY */}
       <HeroText loaded={loaded} />
 
-      {/* BOTTOM RED STRIP */}
+      {/* BOTTOM STRIP */}
       <div className="absolute bottom-0 w-full h-[60px] bg-[#7a0000] z-10" />
 
-    </section>
+    </motion.section>
   );
 }
+
 
 function AnimatedTitle({ loaded }: { loaded: boolean }) {
   const text = "Goutham Photography";
 
-  // Pre-generate random delays (prevents re-random on re-render)
   const delays = text.split("").map(() => 1.2 + Math.random() * 0.8);
 
   return (
