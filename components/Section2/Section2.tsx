@@ -1,38 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 
-export default function Section2() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  // 🎬 Background cinematic motion (ONLY BG, not text)
-  const blur = useTransform(scrollYProgress, [0, 0.5, 1], [25, 0, 25]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1, 1.08]);
-  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-  const blurValue = useTransform(blur, (b) => `blur(${b}px)`);
-
-  // 🎯 Subtle content movement (NO opacity)
-  const contentY = useTransform(scrollYProgress, [0.15, 0.35], [60, 0]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+export default function Section2({
+  setSection,
+}: {
+  setSection: (n: number) => void;
+}) {
   return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
 
       {/* BACKGROUND */}
-      <motion.div
-        style={{ scale, filter: blurValue, y }}
-        className="absolute inset-0"
-      >
+      <div className="absolute inset-0">
         <Image
           src="/images/page2-bg.jpg"
           alt="bg"
@@ -40,7 +19,7 @@ export default function Section2() {
           className="object-cover"
           priority
         />
-      </motion.div>
+      </div>
 
       {/* YELLOW OVERLAY */}
       <div className="absolute inset-0 bg-[#8a5a2b]/50 z-10" />
@@ -56,11 +35,8 @@ export default function Section2() {
         Contact
       </div>
 
-      {/* CONTENT (NO OPACITY HERE 🚫) */}
-      <motion.div
-        style={{ y: contentY }}
-        className="absolute inset-0 z-50 pointer-events-none"
-      >
+      {/* CONTENT */}
+      <div className="absolute inset-0 z-50 pointer-events-none">
 
         {/* TITLE (ON TOP) */}
         <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-30">
@@ -98,11 +74,11 @@ export default function Section2() {
           />
         </div>
 
-      </motion.div>
+      </div>
 
-      {/* ARROW */}
+      {/* ARROW (FIXED ✅) */}
       <button
-        onClick={scrollToTop}
+        onClick={() => setSection(0)}
         className="absolute bottom-[40px] left-6 z-[100] p-3 text-white text-5xl hover:scale-110 transition"
       >
         ↑

@@ -28,13 +28,9 @@ body {
 html, body {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
-  /* overflow: hidden; 🔥 THIS FIXES MULTIPLE SCROLL PAGES */
+  overflow: hidden; /* 🔥 important */
 }
 
-html {
-  scroll-snap-type: y mandatory;
-}
 body {
   font-family: "Times New Roman", Times, serif;
 }
