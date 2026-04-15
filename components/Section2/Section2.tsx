@@ -17,8 +17,6 @@ export default function Section2() {
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.05, 1, 1.05]);
   const blurValue = useTransform(blur, (b) => `blur(${b}px)`);
 
-  const contentOpacity = useTransform(scrollYProgress, [0.2, 0.4, 0.8], [0, 1, 0]);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -41,7 +39,7 @@ export default function Section2() {
       </motion.div>
 
       {/* YELLOW OVERLAY */}
-      <div className="absolute inset-0 bg-[#8a5a2b]/35 z-10" />
+      <div className="absolute inset-0 bg-[#8a5a2b]/50 z-10" />
 
       {/* TOP STRIP */}
       <div className="absolute top-0 w-full h-[10px] bg-[#b88a52] z-20" />
@@ -55,10 +53,7 @@ export default function Section2() {
       </div>
 
       {/* CONTENT */}
-      <motion.div
-        style={{ opacity: contentOpacity }}
-        className="absolute inset-0 z-50"
-      >
+      <motion.div className="absolute inset-0 z-50">
 
         {/* TITLE */}
         <div className="absolute top-[-1px] left-1/2 -translate-x-1/2">
@@ -68,7 +63,7 @@ export default function Section2() {
             width={1000}
             height={300}
             priority
-            className="w-[90vw] max-w-[1800px] h-auto"
+            className="w-[90vw] max-w-[1800px] h-auto brightness-125 contrast-110"
             style={{ mixBlendMode: "normal" }}
           />
         </div>
@@ -81,7 +76,7 @@ export default function Section2() {
             width={1200}
             height={350}
             priority
-            className="w-[100vw] max-w-[1200px] h-auto"
+            className="w-[100vw] max-w-[1200px] h-auto brightness-125 contrast-110"
             style={{ mixBlendMode: "normal" }}
           />
         </div>
@@ -94,7 +89,7 @@ export default function Section2() {
             width={1300}
             height={600}
             priority
-            className="w-[95vw] max-w-[1100px] h-auto"
+            className="w-[95vw] max-w-[1100px] h-auto brightness-125 contrast-110"
             style={{ mixBlendMode: "normal" }}
           />
         </div>
