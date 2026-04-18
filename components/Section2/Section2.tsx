@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Section2({
   setSection,
@@ -21,13 +22,19 @@ export default function Section2({
         />
       </div>
 
-      {/* YELLOW OVERLAY */}
+      {/* ✅ YELLOW REVEAL (KEY FIX) */}
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute inset-0 bg-[#8a5a2b] z-20"
+      />
+
+      {/* EXISTING OVERLAY (keep this) */}
       <div className="absolute inset-0 bg-[#8a5a2b]/50 z-10" />
 
-      {/* TOP STRIP */}
+      {/* STRIPS */}
       <div className="absolute top-0 w-full h-[10px] bg-[#b88a52] z-20" />
-
-      {/* BOTTOM STRIP */}
       <div className="absolute bottom-0 w-full h-[10px] bg-[#b88a52] z-20" />
 
       {/* CONTACT */}
@@ -38,7 +45,7 @@ export default function Section2({
       {/* CONTENT */}
       <div className="absolute inset-0 z-50 pointer-events-none">
 
-        {/* TITLE (ON TOP) */}
+        {/* TITLE (NO ANIMATION YET) */}
         <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-30">
           <Image
             src="/images/page2-title.png"
@@ -62,7 +69,7 @@ export default function Section2({
           />
         </div>
 
-        {/* WHITE TEXT */}
+        {/* PARAGRAPH */}
         <div className="absolute top-[20px] left-1/2 -translate-x-1/2 z-10">
           <Image
             src="/images/page2-white-text.png"
@@ -76,7 +83,7 @@ export default function Section2({
 
       </div>
 
-      {/* ARROW (FIXED ✅) */}
+      {/* ARROW */}
       <button
         onClick={() => setSection(0)}
         className="absolute bottom-[40px] left-6 z-[100] p-3 text-white text-5xl hover:scale-110 transition"

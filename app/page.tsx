@@ -17,7 +17,7 @@ export default function Home() {
     if (direction === "down" && section === 0) setSection(1);
     if (direction === "up" && section === 1) setSection(0);
 
-    setTimeout(() => setIsAnimating(false), 700); // 🔥 faster
+    setTimeout(() => setIsAnimating(false), 700);
   };
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <main className="relative w-full h-screen overflow-hidden">
 
-      {/* 🔥 FAKE SCROLLBAR */}
+      {/* SCROLLBAR */}
       <div className="fixed right-3 top-1/2 -translate-y-1/2 z-[999]">
         <div className="w-[4px] h-[120px] bg-white/20 rounded-full overflow-hidden">
           <motion.div
@@ -44,8 +44,9 @@ export default function Home() {
         </div>
       </div>
 
-      <AnimatePresence mode="sync"> {/* 🔥 FIXED */}
+      <AnimatePresence mode="sync">
 
+        {/* HERO */}
         {section === 0 && (
           <motion.div
             key="hero"
@@ -53,32 +54,29 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{
               opacity: 0,
-              scale: 0.97,
-              filter: "blur(8px)",
+              filter: "blur(8px)",   // ✅ KEEP ONLY THIS
             }}
-            transition={{ duration: 0.6 }} // 🔥 faster
+            transition={{ duration: 0.6 }}
             className="absolute inset-0"
           >
             <Hero />
           </motion.div>
         )}
 
+        {/* SECTION 2 */}
         {section === 1 && (
           <motion.div
             key="section2"
             initial={{
               opacity: 0,
-              scale: 1.05,
-              filter: "blur(15px)",
+              filter: "blur(15px)",   // ✅ ONLY BLUR
             }}
             animate={{
               opacity: 1,
-              scale: 1,
               filter: "blur(0px)",
             }}
             exit={{
               opacity: 0,
-              scale: 1.02,
               filter: "blur(10px)",
             }}
             transition={{ duration: 0.7 }}

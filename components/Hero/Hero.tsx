@@ -16,7 +16,7 @@ export default function Hero() {
 
   // 🎯 Smooth fade out on scroll
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  // const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 400);
@@ -26,14 +26,14 @@ export default function Hero() {
   return (
     <motion.section
       ref={ref}
-      style={{ opacity, scale }}
+      style={{ opacity}}
       className="relative w-full h-screen overflow-hidden"
     >
 
       {/* BACKGROUND */}
       <motion.div
-        initial={{ filter: "blur(20px)", scale: 1.05 }}
-        animate={loaded ? { filter: "blur(0px)", scale: 1 } : {}}
+        initial={{ filter: "blur(20px)"}}
+        animate={loaded ? { filter: "blur(0px)"} : {}}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute inset-0"
       >
