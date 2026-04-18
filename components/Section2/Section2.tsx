@@ -26,7 +26,7 @@ export default function Section2({
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
         className="absolute inset-0 bg-[#8a5a2b] z-20"
       />
 
@@ -42,14 +42,14 @@ export default function Section2({
         Contact
       </div>
 
-      {/* ================= CONTENT LAYERS ================= */}
+      {/* ================= CONTENT ================= */}
 
-      {/* TITLE (TOP LAYER) */}
+      {/* TITLE */}
       <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-[60]">
         <motion.div
           initial={{ x: -20, filter: "blur(10px)" }}
           animate={{ x: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.4, ease: "easeOut" }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
         >
           <Image
             src="/images/page2-title.png"
@@ -62,7 +62,7 @@ export default function Section2({
         </motion.div>
       </div>
 
-      {/* I COMPOSE (MIDDLE LAYER - NO ANIMATION) */}
+      {/* I COMPOSE (NO ANIMATION) */}
       <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 z-[40]">
         <Image
           src="/images/page2-icompose-text.png"
@@ -74,8 +74,23 @@ export default function Section2({
         />
       </div>
 
-      {/* PARAGRAPH (BOTTOM LAYER) */}
-      <div className="absolute top-[20px] left-1/2 -translate-x-1/2 z-[20]">
+      {/* PARAGRAPH (BLUR → SHARP, NO MOVEMENT) */}
+      <motion.div
+        className="absolute top-[8px] left-1/2 -translate-x-1/2 z-[20]"
+        initial={{
+          opacity: 0,
+          filter: "blur(14px)",
+        }}
+        animate={{
+          opacity: 1,
+          filter: "blur(0px)",
+        }}
+        transition={{
+          duration: 3,
+          ease: [0.25, 0.8, 0.25, 1],
+          delay: 0.5,
+        }}
+      >
         <Image
           src="/images/page2-white-text.png"
           alt="text"
@@ -84,7 +99,7 @@ export default function Section2({
           priority
           className="w-[95vw] max-w-[1100px] h-auto"
         />
-      </div>
+      </motion.div>
 
       {/* ARROW */}
       <button
