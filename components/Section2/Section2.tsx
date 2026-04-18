@@ -22,7 +22,7 @@ export default function Section2({
         />
       </div>
 
-      {/* ✅ YELLOW REVEAL (KEY FIX) */}
+      {/* YELLOW REVEAL */}
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
@@ -30,7 +30,7 @@ export default function Section2({
         className="absolute inset-0 bg-[#8a5a2b] z-20"
       />
 
-      {/* EXISTING OVERLAY (keep this) */}
+      {/* OVERLAY */}
       <div className="absolute inset-0 bg-[#8a5a2b]/50 z-10" />
 
       {/* STRIPS */}
@@ -42,11 +42,15 @@ export default function Section2({
         Contact
       </div>
 
-      {/* CONTENT */}
-      <div className="absolute inset-0 z-50 pointer-events-none">
+      {/* ================= CONTENT LAYERS ================= */}
 
-        {/* TITLE (NO ANIMATION YET) */}
-        <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-30">
+      {/* TITLE (TOP LAYER) */}
+      <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-[60]">
+        <motion.div
+          initial={{ x: -20, filter: "blur(10px)" }}
+          animate={{ x: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1.4, ease: "easeOut" }}
+        >
           <Image
             src="/images/page2-title.png"
             alt="title"
@@ -55,32 +59,31 @@ export default function Section2({
             priority
             className="w-[90vw] max-w-[1800px] h-auto"
           />
-        </div>
+        </motion.div>
+      </div>
 
-        {/* I COMPOSE */}
-        <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 z-20">
-          <Image
-            src="/images/page2-icompose-text.png"
-            alt="compose"
-            width={1200}
-            height={350}
-            priority
-            className="w-[100vw] max-w-[1200px] h-auto"
-          />
-        </div>
+      {/* I COMPOSE (MIDDLE LAYER - NO ANIMATION) */}
+      <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 z-[40]">
+        <Image
+          src="/images/page2-icompose-text.png"
+          alt="compose"
+          width={1200}
+          height={350}
+          priority
+          className="w-[100vw] max-w-[1200px] h-auto"
+        />
+      </div>
 
-        {/* PARAGRAPH */}
-        <div className="absolute top-[20px] left-1/2 -translate-x-1/2 z-10">
-          <Image
-            src="/images/page2-white-text.png"
-            alt="text"
-            width={1300}
-            height={600}
-            priority
-            className="w-[95vw] max-w-[1100px] h-auto"
-          />
-        </div>
-
+      {/* PARAGRAPH (BOTTOM LAYER) */}
+      <div className="absolute top-[20px] left-1/2 -translate-x-1/2 z-[20]">
+        <Image
+          src="/images/page2-white-text.png"
+          alt="text"
+          width={1300}
+          height={600}
+          priority
+          className="w-[95vw] max-w-[1100px] h-auto"
+        />
       </div>
 
       {/* ARROW */}
