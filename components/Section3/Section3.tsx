@@ -13,8 +13,13 @@ export default function Section3({
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
 
       {/* CONTACT */}
-      <div className="absolute top-[25px] right-10 z-30 text-white text-lg font-[var(--font-playfair)]">
-        Contact
+      <div className="
+        absolute top-[25px] right-10 z-30
+        text-white text-[18px]
+        tracking-[0.25em]
+        font-[var(--font-bodoni)]
+      ">
+        CONTACT
       </div>
 
       {/* ================= TITLE STACK ================= */}
