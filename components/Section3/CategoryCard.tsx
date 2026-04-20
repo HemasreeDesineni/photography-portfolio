@@ -30,8 +30,8 @@ export default function CategoryCard({
       {/* DARK OVERLAY */}
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition" />
 
-      {/* TITLE */}
-      <div className="absolute top-5 left-5 text-white text-lg tracking-widest font-[var(--font-playfair)] z-10">
+      {/* TITLE (CENTER ALIGNED) */}
+      <div className="absolute top-5 left-1/2 -translate-x-1/2 text-white text-lg tracking-widest font-[var(--font-playfair)] z-10 text-center whitespace-nowrap">
         {title}
       </div>
 
