@@ -27,8 +27,16 @@ export default function CategoryCard({
         className="object-cover"
       />
 
-      {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition" />
+      {/* DARK OVERLAY
+      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition" /> */}
+      {/* OVERLAY STACK */}
+      <div className="absolute inset-0 z-[1]">
+        {/* Dark base */}
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition" />
+
+        {/* Green tint (THE IMPORTANT PART) */}
+        <div className="absolute inset-0 bg-[#3d381b]/30 group-hover:bg-[#3d381b]/20 transition" />
+      </div>
 
       {/* TITLE (UPDATED FONT) */}
       <div
