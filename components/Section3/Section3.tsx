@@ -42,14 +42,14 @@ export default function Section3({
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 2 }}
               style={{ top: "-18px" }}
-              className="absolute left-1/2 z-[20] h-[110px] w-[520px] -translate-x-1/2 pointer-events-none md:h-[150px] md:w-[680px] lg:h-[200px] lg:w-[920px] xl:h-[250px] xl:w-[1160px]"
+              className="absolute left-1/2 z-[20] h-[118px] w-[560px] -translate-x-1/2 pointer-events-none md:h-[162px] md:w-[760px] lg:h-[215px] lg:w-[1040px] xl:h-[270px] xl:w-[1280px]"
             >
               <Image
                 src="/images/visual-portfolio.png"
                 alt="visual portfolio"
                 fill
                 priority
-                sizes="(max-width: 768px) 520px, (max-width: 1024px) 680px, (max-width: 1280px) 920px, 1160px"
+                sizes="(max-width: 768px) 560px, (max-width: 1024px) 760px, (max-width: 1280px) 1040px, 1280px"
                 className="object-cover opacity-90"
                 style={{ objectPosition: "50% 47.3%" }}
               />
