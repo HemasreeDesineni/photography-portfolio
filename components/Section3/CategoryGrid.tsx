@@ -8,21 +8,29 @@ const categories = [
     id: "conceptual",
     title: "CONCEPTUAL",
     image: "/images/conceptual.jpg",
+    zoom: 1,
+    position: "center",
   },
   {
     id: "arangetram",
     title: "ARANGETRAM",
     image: "/images/arangetram.jpg",
+    zoom: 1,
+    position: "center",
   },
   {
     id: "indoor",
     title: "INDOOR",
     image: "/images/indoor.jpg",
+    zoom: 1,
+    position: "center",
   },
   {
     id: "performances",
     title: "PERFORMANCES",
     image: "/images/performances.jpg",
+    zoom: 1.2,              // 🔥 zoomed in
+    position: "center top", // 🔥 pushes focus upward
   },
 ];
 
@@ -40,6 +48,8 @@ export default function CategoryGrid() {
           onClick={() =>
             setActive(active === cat.id ? null : cat.id)
           }
+          zoom={cat.zoom}
+          position={cat.position}
         />
       ))}
     </div>

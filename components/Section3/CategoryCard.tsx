@@ -8,37 +8,43 @@ export default function CategoryCard({
   image,
   isActive,
   onClick,
+  zoom = 1,
+  position = "center",
 }: {
   title: string;
   image: string;
   isActive: boolean;
   onClick: () => void;
+  zoom?: number;
+  position?: string;
 }) {
   return (
     <div
       onClick={onClick}
       className="relative h-[420px] cursor-pointer overflow-hidden group"
     >
-      {/* IMAGE */}
+      {/* IMAGE (zoom + position controlled) */}
       <Image
         src={image}
         alt={title}
         fill
         className="object-cover"
+        style={{
+          transform: `scale(${zoom})`,
+          objectPosition: position,
+        }}
       />
 
-      {/* DARK OVERLAY
-      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition" /> */}
       {/* OVERLAY STACK */}
       <div className="absolute inset-0 z-[1]">
-        {/* Dark base */}
+        {/* Dark layer */}
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition" />
 
-        {/* Green tint (THE IMPORTANT PART) */}
+        {/* Green tint layer */}
         <div className="absolute inset-0 bg-[#3d381b]/30 group-hover:bg-[#3d381b]/20 transition" />
       </div>
 
-      {/* TITLE (UPDATED FONT) */}
+      {/* TITLE */}
       <div
         className="
           absolute top-5 left-1/2 -translate-x-1/2
