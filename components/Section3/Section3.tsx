@@ -11,54 +11,75 @@ export default function Section3({
 }) {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
+      <div className="flex h-full flex-col">
+        {/* TOP BANNER */}
+        <div className="relative w-full shrink-0">
+          <div className="relative h-[240px] overflow-hidden md:h-[290px] lg:h-[340px] xl:h-[380px]">
+            <Image
+              src="/images/page3banner.jpeg"
+              alt="Page 3 banner"
+              width={4910}
+              height={1089}
+              priority
+              sizes="100vw"
+              className="absolute bottom-[120px] left-0 w-full h-auto opacity-65"
+            />
+            <div className="absolute inset-0 bg-[#3d381b]/45" />
 
-      {/* CONTACT */}
-      <div className="
-        absolute top-[25px] right-10 z-30
-        text-white text-[18px]
-        tracking-[0.25em]
-        font-[var(--font-bodoni)]
-      ">
-        CONTACT
-      </div>
+            {/* CONTACT */}
+            <div className="
+              absolute top-5 right-6 z-[30]
+              text-white text-[18px]
+              tracking-[0.25em]
+              font-[var(--font-bodoni)]
+            ">
+              CONTACT
+            </div>
 
-      {/* ================= TITLE STACK ================= */}
+            {/* VISUAL PORTFOLIO */}
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 2 }}
+              style={{ top: "-18px" }}
+              className="absolute left-1/2 z-[20] h-[110px] w-[520px] -translate-x-1/2 pointer-events-none md:h-[150px] md:w-[680px] lg:h-[200px] lg:w-[920px] xl:h-[250px] xl:w-[1160px]"
+            >
+              <Image
+                src="/images/visual-portfolio.png"
+                alt="visual portfolio"
+                fill
+                priority
+                sizes="(max-width: 768px) 520px, (max-width: 1024px) 680px, (max-width: 1280px) 920px, 1160px"
+                className="object-cover opacity-90"
+                style={{ objectPosition: "50% 47.3%" }}
+              />
+            </motion.div>
 
-      {/* VISUAL PORTFOLIO (TOPMOST) */}
-      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 z-[60] pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 2 }}
+            {/* PHOTOGRAPHY */}
+            <div
+              style={{ bottom: "140px" }}
+              className="absolute left-1/2 z-[20] h-[18px] w-[240px] -translate-x-1/2 pointer-events-none md:h-[26px] md:w-[340px] lg:h-[34px] lg:w-[460px] xl:h-[44px] xl:w-[580px]"
+            >
+              <Image
+                src="/images/photography.png"
+                alt="photography"
+                fill
+                priority
+                sizes="(max-width: 768px) 240px, (max-width: 1024px) 340px, (max-width: 1280px) 460px, 580px"
+                className="object-cover opacity-90"
+                style={{ objectPosition: "50% 49.5%" }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* CATEGORY GRID */}
+        <div
+          style={{ marginTop: "-110px" }}
+          className="relative z-[40] mx-auto w-full max-w-[1520px] px-6"
         >
-          <Image
-            src="/images/visual-portfolio.png"
-            alt="visual portfolio"
-            width={1400}
-            height={400}
-            priority
-            className="w-[90vw] max-w-[1600px] h-auto"
-          />
-        </motion.div>
-      </div>
-
-      {/* PHOTOGRAPHY */}
-      <div className="absolute top-[50px] left-1/2 -translate-x-1/2 z-[55] pointer-events-none">
-        <Image
-          src="/images/photography.png"
-          alt="photography"
-          width={400}
-          height={100}
-          priority
-          className="w-[550px] h-auto opacity-90"
-        />
-      </div>
-
-      {/* ================= CATEGORY GRID ================= */}
-
-      {/* PUSHED SLIGHTLY DOWN */}
-      <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2 w-full z-[40] px-10">
-        <CategoryGrid />
+          <CategoryGrid />
+        </div>
       </div>
 
       {/* BACK BUTTON */}
