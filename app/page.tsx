@@ -1,34 +1,34 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useEffectEvent } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Hero from "@/components/Hero/Hero";
 import Section2 from "@/components/Section2/Section2";
 import Section3 from "@/components/Section3/Section3";
-import { AnimatePresence, motion } from "framer-motion";
+import Section4 from "@/components/Section4/Section4";
+
+const SECTION_COUNT = 4;
+const SCROLLBAR_TRACK_HEIGHT = 180;
+const SCROLLBAR_THUMB_HEIGHT = SCROLLBAR_TRACK_HEIGHT / SECTION_COUNT;
 
 export default function Home() {
   const [section, setSection] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleScroll = (direction: "up" | "down") => {
+  const handleScroll = useEffectEvent((direction: "up" | "down") => {
     if (isAnimating) return;
 
+    const nextSection =
+      direction === "down"
+        ? Math.min(section + 1, SECTION_COUNT - 1)
+        : Math.max(section - 1, 0);
+
+    if (nextSection === section) return;
+
     setIsAnimating(true);
-
-    // DOWN SCROLL
-    if (direction === "down") {
-      if (section === 0) setSection(1);
-      else if (section === 1) setSection(2);
-    }
-
-    // UP SCROLL
-    if (direction === "up") {
-      if (section === 2) setSection(1);
-      else if (section === 1) setSection(0);
-    }
-
-    setTimeout(() => setIsAnimating(false), 700);
-  };
+    setSection(nextSection);
+    window.setTimeout(() => setIsAnimating(false), 700);
+  });
 
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
@@ -38,31 +38,23 @@ export default function Home() {
 
     window.addEventListener("wheel", onWheel);
     return () => window.removeEventListener("wheel", onWheel);
-  }, [section, isAnimating]);
+  }, []);
 
   return (
-    <main className="relative w-full h-screen overflow-hidden">
-
+    <main className="relative h-screen w-full overflow-hidden">
       {/* SCROLLBAR */}
-      <div className="fixed right-3 top-1/2 -translate-y-1/2 z-[999]">
-        <div className="w-[4px] h-[180px] bg-white/20 rounded-full overflow-hidden">
+      <div className="fixed right-3 top-1/2 z-[999] -translate-y-1/2">
+        <div className="h-[180px] w-[4px] overflow-hidden rounded-full bg-white/20">
           <motion.div
-            animate={{
-              y:
-                section === 0
-                  ? 0
-                  : section === 1
-                  ? 60
-                  : 120,
-            }}
+            animate={{ y: section * SCROLLBAR_THUMB_HEIGHT }}
             transition={{ duration: 0.5 }}
-            className="w-full h-[60px] bg-white rounded-full"
+            className="w-full rounded-full bg-white"
+            style={{ height: SCROLLBAR_THUMB_HEIGHT }}
           />
         </div>
       </div>
 
       <AnimatePresence mode="sync">
-
         {/* HERO */}
         {section === 0 && (
           <motion.div
@@ -126,6 +118,28 @@ export default function Home() {
           </motion.div>
         )}
 
+        {/* SECTION 4 */}
+        {section === 3 && (
+          <motion.div
+            key="section4"
+            initial={{
+              opacity: 0,
+              filter: "blur(15px)",
+            }}
+            animate={{
+              opacity: 1,
+              filter: "blur(0px)",
+            }}
+            exit={{
+              opacity: 0,
+              filter: "blur(10px)",
+            }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <Section4 setSection={setSection} />
+          </motion.div>
+        )}
       </AnimatePresence>
     </main>
   );
