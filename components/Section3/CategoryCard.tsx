@@ -21,7 +21,7 @@ export default function CategoryCard({
   return (
     <div
       onClick={onClick}
-      className="relative h-[420px] cursor-pointer overflow-hidden group"
+      className="relative h-[360px] cursor-pointer overflow-hidden group"
     >
       {/* IMAGE (zoom + position controlled) */}
       <Image
