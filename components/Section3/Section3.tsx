@@ -76,7 +76,7 @@ export default function Section3({
         {/* CATEGORY GRID */}
         <div
           style={{ marginTop: "-110px" }}
-          className="relative z-[40] mx-auto w-full max-w-[1520px] px-6"
+          className="relative z-[40] mx-auto flex-1 min-h-0 w-full max-w-[1520px] px-6 pb-0"
         >
           <CategoryGrid />
         </div>
