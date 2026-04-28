@@ -19,20 +19,22 @@ export default function Section4({
         CONTACT
       </div>
 
-      {/* TITLE (TOP CENTER — CLEAN) */}
-      <div className="absolute top-[120px] left-1/2 -translate-x-1/2 z-[50]">
+      {/* TITLE — EXACT SAME AS SECTION 3 */}
+      <div className="pointer-events-none absolute left-1/2 top-[70px] -translate-x-1/2 z-[50] h-[70px] w-[1000px]">
         <Image
           src="/images/videography.png"
           alt="videography"
-          width={600}
-          height={120}
-          className="opacity-90"
+          fill
+          priority
+          className="object-cover opacity-90"
         />
       </div>
 
-      {/* GRID — CONTROLLED POSITION */}
-      <div className="absolute top-[240px] left-1/2 -translate-x-1/2 w-full max-w-[1520px] px-6">
-        <CategoryGrid />
+      {/* GRID — MOVED UP */}
+      <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-full max-w-[1520px] px-6">
+        <div className="h-[calc(100vh-230px)]">
+          <CategoryGrid />
+        </div>
       </div>
 
       {/* BACK */}
