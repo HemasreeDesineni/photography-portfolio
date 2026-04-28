@@ -1,6 +1,7 @@
 "use client";
 
-import PortfolioShowcaseSection from "../Section3/PortfolioShowcaseSection";
+import Image from "next/image";
+import CategoryGrid from "../Section3/CategoryGrid";
 
 export default function Section4({
   setSection,
@@ -8,15 +9,39 @@ export default function Section4({
   setSection: (n: number) => void;
 }) {
   return (
-    <PortfolioShowcaseSection
-      setSection={setSection}
-      titleSrc="/images/videography.png"
-      titleAlt="videography"
-      showBannerImage={false}
-      showVisualTitle={false}
-      titleClassName="h-[48px] w-[500px] md:h-[72px] md:w-[660px] lg:h-[94px] lg:w-[860px] xl:h-[116px] xl:w-[1040px]"
-      titleSizes="(max-width: 768px) 500px, (max-width: 1024px) 660px, (max-width: 1280px) 860px, 1040px"
-      gridMarginTop="-135px"
-    />
+    <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
+
+      {/* CONTACT */}
+      <div
+        onClick={() => setSection(4)}
+        className="absolute top-5 right-6 z-[100] text-[18px] tracking-[0.25em] text-white cursor-pointer"
+      >
+        CONTACT
+      </div>
+
+      {/* TITLE (TOP CENTER — CLEAN) */}
+      <div className="absolute top-[120px] left-1/2 -translate-x-1/2 z-[50]">
+        <Image
+          src="/images/videography.png"
+          alt="videography"
+          width={600}
+          height={120}
+          className="opacity-90"
+        />
+      </div>
+
+      {/* GRID — CONTROLLED POSITION */}
+      <div className="absolute top-[240px] left-1/2 -translate-x-1/2 w-full max-w-[1520px] px-6">
+        <CategoryGrid />
+      </div>
+
+      {/* BACK */}
+      <button
+        onClick={() => setSection(0)}
+        className="absolute bottom-[40px] left-6 z-[100] text-5xl text-white"
+      >
+        ↑
+      </button>
+    </section>
   );
 }
