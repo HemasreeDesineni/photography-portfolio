@@ -42,7 +42,7 @@ export default function Section3({
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 2 }}
-              className="pointer-events-none absolute left-1/2 top-[-22px] z-[20] h-[135px] w-[640px] -translate-x-1/2 md:h-[182px] md:w-[860px] lg:h-[244px] lg:w-[1180px] xl:h-[306px] xl:w-[1450px]"
+              className="pointer-events-none absolute left-[660px] top-[-22px] z-[20] h-[135px] w-[640px] -translate-x-1/2 md:h-[182px] md:w-[860px] lg:h-[244px] lg:w-[1180px] xl:h-[306px] xl:w-[1450px]"
             >
               <Image
                 src="/images/visual-portfolio.png"
