@@ -103,9 +103,9 @@ function AnimatedTitle({
         initial={{ opacity: 0, filter: "blur(8px)", y: 10 }}
         animate={loaded ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-        className="absolute right-10 top-[-15px] cursor-pointer text-lg tracking-[0.25em] z-50"
+        className="absolute right-10 top-[-15px] cursor-pointer text-lg z-50"
       >
-        CONTACT
+        Contact
       </motion.span>
     </div>
   );
