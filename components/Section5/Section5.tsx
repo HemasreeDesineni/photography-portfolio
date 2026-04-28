@@ -27,7 +27,7 @@ export default function Section5({
               alt="reach"
               width={1200}
               height={300}
-              className="w-[800px] lg:w-[950px]"
+              className="w-[950px] lg:w-[1100px]"
             />
           </motion.div>
 
@@ -60,7 +60,7 @@ export default function Section5({
               alt="something"
               width={1400}
               height={600}
-              className="w-[700px] lg:w-[900px]"
+              className="w-[900px] lg:w-[1100px]"
             />
           </motion.div>
 
@@ -71,38 +71,50 @@ export default function Section5({
             TOGETHER
           </motion.div>
 
-          {/* ================= RIGHT COLUMN ================= */}
+          {/* ================= RIGHT COLUMN (FIXED) ================= */}
 
           <motion.div
-            className="absolute top-[180px] right-[130px] flex flex-col gap-10 items-start"
+            className="absolute top-[100px] right-[150px] w-[420px]"
           >
+
             {/* INSTAGRAM */}
-            <div className="flex items-center gap-6">
+            <div className="relative h-[120px]">
+
+              {/* ICON */}
               <Image
                 src="/images/instagram-icon.png"
                 alt="insta"
-                width={140}
-                height={140}
-                className="w-[500px]"
+                width={200}
+                height={200}
+                className="absolute left-[-250px] top-[75px] w-[250px] z-10"
               />
-              <span className="tracking-[0.25em] text-l">
+
+              {/* TEXT */}
+              <span className="absolute left-[-100px] top-[130px] tracking-[0.25em] text-lg">
                 : VISUALS_BY_GOUTHAM
               </span>
+
             </div>
 
             {/* WHATSAPP */}
-            <div className="flex items-center gap-6">
+            <div className="relative h-[120px] mt-6">
+
+              {/* ICON */}
               <Image
                 src="/images/whatsapp-icon.png"
                 alt="whatsapp"
-                width={140}
-                height={140}
-                className="w-[500px]"
+                width={200}
+                height={200}
+                className="absolute left-[-228px] top-[-15px] w-[210px] z-10"
               />
-              <span className="tracking-[0.25em] text-l">
+
+              {/* TEXT */}
+              <span className="absolute left-[-100px] top-[30px] tracking-[0.25em] text-lg">
                 : 9154899991
               </span>
+
             </div>
+
           </motion.div>
 
         </div>
