@@ -86,11 +86,11 @@ export default function Section5({
                 alt="insta"
                 width={200}
                 height={200}
-                className="absolute left-[-250px] top-[75px] w-[250px] z-10"
+                className="absolute left-[-300px] top-[75px] w-[250px] z-10"
               />
 
               {/* TEXT */}
-              <span className="absolute left-[-100px] top-[130px] tracking-[0.25em] text-lg">
+              <span className="absolute left-[-150px] top-[130px] tracking-[0.25em] text-lg">
                 : VISUALS_BY_GOUTHAM
               </span>
 
@@ -105,11 +105,11 @@ export default function Section5({
                 alt="whatsapp"
                 width={200}
                 height={200}
-                className="absolute left-[-228px] top-[-15px] w-[210px] z-10"
+                className="absolute left-[-278px] top-[-15px] w-[210px] z-10"
               />
 
               {/* TEXT */}
-              <span className="absolute left-[-100px] top-[30px] tracking-[0.25em] text-lg">
+              <span className="absolute left-[-150px] top-[30px] tracking-[0.25em] text-lg">
                 : 9154899991
               </span>
 
