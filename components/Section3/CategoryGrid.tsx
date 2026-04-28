@@ -38,7 +38,7 @@ export default function CategoryGrid() {
   const [active, setActive] = useState<string | null>(null);
 
   return (
-    <div className="mx-auto grid h-[500px] max-w-[1400px] grid-cols-4 gap-6">
+    <div className="mx-auto grid h-full max-w-[1400px] grid-cols-4 auto-rows-fr gap-6">
       {categories.map((cat) => (
         <CategoryCard
           key={cat.id}

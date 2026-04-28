@@ -67,9 +67,14 @@ export default function Section3({
           </div>
         </div>
 
-        {/* GRID */}
-        <div className="relative z-[40] mx-auto flex-1 w-full max-w-[1520px] px-6 -mt-[110px]">
-          <CategoryGrid />
+        {/* ✅ GRID — FORCE FULL HEIGHT CORRECTLY */}
+        <div className="relative z-[40] mx-auto w-full max-w-[1520px] px-6 mt-[-110px]">
+
+          {/* 💡 THIS is the real fix */}
+          <div className="h-[calc(100vh-270px)]">
+            <CategoryGrid />
+          </div>
+
         </div>
       </div>
 
