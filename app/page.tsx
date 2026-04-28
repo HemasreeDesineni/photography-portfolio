@@ -8,7 +8,7 @@ import Section3 from "@/components/Section3/Section3";
 import Section4 from "@/components/Section4/Section4";
 import Section5 from "@/components/Section5/Section5";
 
-const SECTION_COUNT =5;
+const SECTION_COUNT = 5;
 const SCROLLBAR_TRACK_HEIGHT = 180;
 const SCROLLBAR_THUMB_HEIGHT = SCROLLBAR_TRACK_HEIGHT / SECTION_COUNT;
 
@@ -39,6 +39,24 @@ export default function Home() {
 
     window.addEventListener("wheel", onWheel);
     return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
+  // ✅ NEW: KEYBOARD NAVIGATION
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        handleScroll("down");
+      }
+
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        handleScroll("up");
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
   return (
@@ -142,6 +160,7 @@ export default function Home() {
           </motion.div>
         )}
 
+        {/* SECTION 5 */}
         {section === 4 && (
           <motion.div
             key="section5"
