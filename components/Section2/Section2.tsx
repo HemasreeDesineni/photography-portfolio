@@ -10,7 +10,6 @@ export default function Section2({
 }) {
   return (
     <section className="relative h-screen w-full overflow-hidden">
-
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <Image
@@ -38,11 +37,12 @@ export default function Section2({
       <div className="absolute bottom-0 w-full h-[10px] bg-[#b88a52] z-20" />
 
       {/* CONTACT */}
-      <div className="absolute top-[25px] right-10 z-30 text-white text-lg font-[var(--font-playfair)]">
+      <div
+        onClick={() => setSection(4)}
+        className="absolute top-[25px] right-10 z-30 text-white text-lg font-[var(--font-playfair)] cursor-pointer"
+      >
         Contact
       </div>
-
-      {/* ================= CONTENT ================= */}
 
       {/* TITLE */}
       <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-[60]">
@@ -62,7 +62,7 @@ export default function Section2({
         </motion.div>
       </div>
 
-      {/* I COMPOSE (NO ANIMATION) */}
+      {/* I COMPOSE */}
       <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 z-[40]">
         <Image
           src="/images/page2-icompose-text.png"
@@ -74,17 +74,11 @@ export default function Section2({
         />
       </div>
 
-      {/* PARAGRAPH (BLUR → SHARP, NO MOVEMENT) */}
+      {/* PARAGRAPH */}
       <motion.div
         className="absolute top-[8px] left-1/2 -translate-x-1/2 z-[20]"
-        initial={{
-          opacity: 0,
-          filter: "blur(14px)",
-        }}
-        animate={{
-          opacity: 1,
-          filter: "blur(0px)",
-        }}
+        initial={{ opacity: 0, filter: "blur(14px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{
           duration: 3,
           ease: [0.25, 0.8, 0.25, 1],
@@ -101,14 +95,13 @@ export default function Section2({
         />
       </motion.div>
 
-      {/* ARROW */}
+      {/* BACK BUTTON */}
       <button
         onClick={() => setSection(0)}
         className="absolute bottom-[40px] left-6 z-[100] p-3 text-white text-5xl hover:scale-110 transition"
       >
         ↑
       </button>
-
     </section>
   );
 }

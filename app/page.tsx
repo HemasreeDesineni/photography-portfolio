@@ -6,8 +6,9 @@ import Hero from "@/components/Hero/Hero";
 import Section2 from "@/components/Section2/Section2";
 import Section3 from "@/components/Section3/Section3";
 import Section4 from "@/components/Section4/Section4";
+import Section5 from "@/components/Section5/Section5";
 
-const SECTION_COUNT = 4;
+const SECTION_COUNT =5;
 const SCROLLBAR_TRACK_HEIGHT = 180;
 const SCROLLBAR_THUMB_HEIGHT = SCROLLBAR_TRACK_HEIGHT / SECTION_COUNT;
 
@@ -138,6 +139,19 @@ export default function Home() {
             className="absolute inset-0"
           >
             <Section4 setSection={setSection} />
+          </motion.div>
+        )}
+
+        {section === 4 && (
+          <motion.div
+            key="section5"
+            initial={{ opacity: 0, filter: "blur(15px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(10px)" }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <Section5 setSection={setSection} />
           </motion.div>
         )}
       </AnimatePresence>

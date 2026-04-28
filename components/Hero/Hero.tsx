@@ -5,7 +5,11 @@ import HeroText from "./HeroText";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
-export default function Hero() {
+export default function Hero({
+  setSection,
+}: {
+  setSection: (n: number) => void;
+}) {
   const [loaded, setLoaded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -14,9 +18,7 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // 🎯 Smooth fade out on scroll
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  // const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 400);
@@ -26,14 +28,13 @@ export default function Hero() {
   return (
     <motion.section
       ref={ref}
-      style={{ opacity}}
+      style={{ opacity }}
       className="relative w-full h-screen overflow-hidden"
     >
-
       {/* BACKGROUND */}
       <motion.div
-        initial={{ filter: "blur(20px)"}}
-        animate={loaded ? { filter: "blur(0px)"} : {}}
+        initial={{ filter: "blur(20px)" }}
+        animate={loaded ? { filter: "blur(0px)" } : {}}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute inset-0"
       >
@@ -57,26 +58,29 @@ export default function Hero() {
       {/* TOP STRIP */}
       <div className="absolute top-0 w-full h-[70px] bg-[#7a0000] z-10" />
 
-      <AnimatedTitle loaded={loaded} />
+      <AnimatedTitle loaded={loaded} setSection={setSection} />
 
       <HeroText loaded={loaded} />
 
       {/* BOTTOM STRIP */}
       <div className="absolute bottom-0 w-full h-[60px] bg-[#7a0000] z-10" />
-
     </motion.section>
   );
 }
 
-
-function AnimatedTitle({ loaded }: { loaded: boolean }) {
+function AnimatedTitle({
+  loaded,
+  setSection,
+}: {
+  loaded: boolean;
+  setSection: (n: number) => void;
+}) {
   const text = "Goutham Photography";
 
   const delays = text.split("").map(() => 1.2 + Math.random() * 0.8);
 
   return (
     <div className="absolute top-[45px] w-full text-center text-white font-serif text-4xl z-30 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
-
       {text.split("").map((char, i) => (
         <motion.span
           key={i}
@@ -103,10 +107,11 @@ function AnimatedTitle({ loaded }: { loaded: boolean }) {
 
       {/* CONTACT */}
       <motion.span
+        onClick={() => setSection(4)}
         initial={{ opacity: 0, filter: "blur(8px)", y: 10 }}
         animate={loaded ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-        className="absolute right-10 text-xl top-[-15px]"
+        className="absolute right-10 text-xl top-[-15px] cursor-pointer"
       >
         Contact
       </motion.span>
