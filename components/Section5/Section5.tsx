@@ -20,27 +20,26 @@ export default function Section5({
 
           {/* REACH ME */}
           <motion.div
-            className="absolute top-[-60px] left-1/2 -translate-x-1/2"
+            className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1400px] h-[700px]"
           >
             <Image
               src="/images/reach-me.png"
               alt="reach"
-              width={1200}
-              height={300}
-              className="w-[950px] lg:w-[1100px]"
+              fill
+              className="object-contain scale-125"
             />
           </motion.div>
 
           {/* AT */}
           <motion.div
-            className="absolute top-[30px] left-1/2 -translate-x-1/2"
+            className="absolute top-[35px] left-[620px] -translate-x-1/2"
           >
             <Image
               src="/images/at.png"
               alt="at"
               width={200}
               height={100}
-              className="w-[450px]"
+              className="w-[490px]"
             />
           </motion.div>
 
@@ -53,20 +52,19 @@ export default function Section5({
 
           {/* SOMETHING AMAZING */}
           <motion.div
-            className="absolute top-[300px] left-[580px] -translate-x-1/2"
+            className="absolute top-[300px] left-[580px] -translate-x-1/2 w-[1100px] h-[400px]"
           >
             <Image
               src="/images/something-amazing.png"
               alt="something"
-              width={1400}
-              height={600}
-              className="w-[900px] lg:w-[1100px]"
+              fill
+              className="object-contain scale-110"
             />
           </motion.div>
 
           {/* TOGETHER */}
           <motion.div
-            className="absolute bottom-[100px] left-1/2 -translate-x-1/2 tracking-[0.4em] text-xl"
+            className="absolute bottom-[70px] left-1/2 -translate-x-1/2 tracking-[0.4em] text-xl"
           >
             TOGETHER
           </motion.div>
@@ -86,7 +84,7 @@ export default function Section5({
                 alt="insta"
                 width={200}
                 height={200}
-                className="absolute left-[-300px] top-[75px] w-[250px] z-10"
+                className="absolute left-[-380px] top-[35px] w-[400px] z-10"
               />
 
               {/* TEXT */}
@@ -105,7 +103,7 @@ export default function Section5({
                 alt="whatsapp"
                 width={200}
                 height={200}
-                className="absolute left-[-278px] top-[-15px] w-[210px] z-10"
+                className="absolute left-[-323px] top-[-35px] w-[290px] z-10"
               />
 
               {/* TEXT */}
