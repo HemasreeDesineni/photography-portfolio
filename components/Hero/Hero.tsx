@@ -85,16 +85,8 @@ function AnimatedTitle({
         <motion.span
           key={i}
           style={{ display: "inline-block" }}
-          initial={{
-            opacity: 0,
-            x: -30,
-            filter: "blur(12px)",
-          }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            filter: "blur(0px)",
-          }}
+          initial={{ opacity: 0, x: -30, filter: "blur(12px)" }}
+          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           transition={{
             delay: delays[i],
             duration: 0.9,
@@ -111,9 +103,9 @@ function AnimatedTitle({
         initial={{ opacity: 0, filter: "blur(8px)", y: 10 }}
         animate={loaded ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-        className="absolute right-10 text-xl top-[-15px] cursor-pointer"
+        className="absolute right-10 top-[-15px] cursor-pointer text-lg tracking-[0.25em] z-50"
       >
-        Contact
+        CONTACT
       </motion.span>
     </div>
   );

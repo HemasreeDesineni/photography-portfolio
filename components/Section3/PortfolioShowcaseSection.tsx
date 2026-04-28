@@ -47,7 +47,7 @@ export default function PortfolioShowcaseSection({
             {/* CONTACT */}
             <div
               onClick={() => setSection(4)}
-              className="absolute top-5 right-6 z-[30] text-[18px] tracking-[0.25em] text-white font-[var(--font-bodoni)] cursor-pointer"
+              className="absolute top-5 right-6 z-[100] text-[18px] tracking-[0.25em] text-white font-[var(--font-bodoni)] cursor-pointer hover:opacity-80"
             >
               CONTACT
             </div>

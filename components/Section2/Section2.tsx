@@ -39,9 +39,9 @@ export default function Section2({
       {/* CONTACT */}
       <div
         onClick={() => setSection(4)}
-        className="absolute top-[25px] right-10 z-30 text-white text-lg font-[var(--font-playfair)] cursor-pointer"
+        className="absolute top-[25px] right-10 z-[100] text-white text-lg tracking-[0.25em] font-[var(--font-playfair)] cursor-pointer hover:opacity-80"
       >
-        Contact
+        CONTACT
       </div>
 
       {/* TITLE */}

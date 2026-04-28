@@ -120,7 +120,7 @@ export default function Section5({
 
       {/* BACK BUTTON */}
       <button
-        onClick={() => setSection(3)}
+        onClick={() => setSection(0)}
         className="absolute bottom-[40px] left-6 text-5xl"
       >
         ↑

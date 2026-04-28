@@ -28,20 +28,22 @@ export default function Home() {
 
     setIsAnimating(true);
     setSection(nextSection);
+
     window.setTimeout(() => setIsAnimating(false), 700);
   });
 
+  // 🖱️ Mouse wheel navigation
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
       if (e.deltaY > 0) handleScroll("down");
       else handleScroll("up");
     };
 
-    window.addEventListener("wheel", onWheel);
+    window.addEventListener("wheel", onWheel, { passive: true });
     return () => window.removeEventListener("wheel", onWheel);
   }, []);
 
-  // ✅ NEW: KEYBOARD NAVIGATION
+  // ⌨️ Keyboard navigation
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown") {
@@ -80,14 +82,12 @@ export default function Home() {
             key="hero"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            exit={{
-              opacity: 0,
-              filter: "blur(8px)",
-            }}
+            exit={{ opacity: 0, filter: "blur(8px)" }}
             transition={{ duration: 0.6 }}
             className="absolute inset-0"
           >
-            <Hero />
+            {/* ✅ FIX: pass setSection */}
+            <Hero setSection={setSection} />
           </motion.div>
         )}
 
@@ -95,18 +95,9 @@ export default function Home() {
         {section === 1 && (
           <motion.div
             key="section2"
-            initial={{
-              opacity: 0,
-              filter: "blur(15px)",
-            }}
-            animate={{
-              opacity: 1,
-              filter: "blur(0px)",
-            }}
-            exit={{
-              opacity: 0,
-              filter: "blur(10px)",
-            }}
+            initial={{ opacity: 0, filter: "blur(15px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 0.7 }}
             className="absolute inset-0"
           >
@@ -118,18 +109,9 @@ export default function Home() {
         {section === 2 && (
           <motion.div
             key="section3"
-            initial={{
-              opacity: 0,
-              filter: "blur(15px)",
-            }}
-            animate={{
-              opacity: 1,
-              filter: "blur(0px)",
-            }}
-            exit={{
-              opacity: 0,
-              filter: "blur(10px)",
-            }}
+            initial={{ opacity: 0, filter: "blur(15px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 0.7 }}
             className="absolute inset-0"
           >
@@ -141,18 +123,9 @@ export default function Home() {
         {section === 3 && (
           <motion.div
             key="section4"
-            initial={{
-              opacity: 0,
-              filter: "blur(15px)",
-            }}
-            animate={{
-              opacity: 1,
-              filter: "blur(0px)",
-            }}
-            exit={{
-              opacity: 0,
-              filter: "blur(10px)",
-            }}
+            initial={{ opacity: 0, filter: "blur(15px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 0.7 }}
             className="absolute inset-0"
           >
