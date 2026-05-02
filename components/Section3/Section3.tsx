@@ -1,22 +1,56 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import CategoryGrid from "./CategoryGrid";
+import CategoryFeed from "./CategoryFeed";
+import CategoryImageModal from "./CategoryImageModal";
+import {
+  PHOTOS_PER_PAGE,
+  photographyCategories,
+} from "./categoryData";
 
 export default function Section3({
   setSection,
+  activeCategoryId,
+  galleryPage,
+  modalPhotoIndex,
+  onToggleCategory,
+  onOpenPhoto,
+  onClosePhoto,
+  onPreviousPhoto,
+  onNextPhoto,
 }: {
   setSection: (n: number) => void;
+  activeCategoryId: string | null;
+  galleryPage: number;
+  modalPhotoIndex: number | null;
+  onToggleCategory: (id: string) => void;
+  onOpenPhoto: (photoIndex: number) => void;
+  onClosePhoto: () => void;
+  onPreviousPhoto: () => void;
+  onNextPhoto: () => void;
 }) {
+  const activeCategory =
+    photographyCategories.find((category) => category.id === activeCategoryId) ??
+    null;
+  const pageStartIndex = Math.max(0, (galleryPage - 1) * PHOTOS_PER_PAGE);
+  const galleryPhotos =
+    activeCategory && galleryPage > 0
+      ? activeCategory.photos.slice(
+          pageStartIndex,
+          galleryPage * PHOTOS_PER_PAGE,
+        )
+      : [];
+  const galleryPageCount = activeCategory
+    ? Math.max(1, Math.ceil(activeCategory.photos.length / PHOTOS_PER_PAGE))
+    : 0;
+
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
       <div className="flex h-full flex-col">
-
-        {/* TOP BANNER */}
         <div className="relative w-full shrink-0">
           <div className="relative h-[240px] overflow-hidden md:h-[290px] lg:h-[340px] xl:h-[380px]">
-
             <Image
               src="/images/page3banner.jpeg"
               alt="Page 3 banner"
@@ -29,15 +63,13 @@ export default function Section3({
 
             <div className="absolute inset-0 bg-[#3d381b]/45" />
 
-            {/* CONTACT */}
             <div
               onClick={() => setSection(4)}
-              className="absolute top-5 right-6 z-[100] text-[18px] tracking-[0.25em] text-white cursor-pointer"
+              className="absolute right-6 top-5 z-[100] cursor-pointer text-[18px] tracking-[0.25em] text-white"
             >
               CONTACT
             </div>
 
-            {/* VISUAL PORTFOLIO */}
             <motion.div
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -53,8 +85,7 @@ export default function Section3({
               />
             </motion.div>
 
-            {/* TITLE */}
-            <div className="pointer-events-none absolute left-1/2 bottom-[140px] z-[20] h-[44px] w-[580px] -translate-x-1/2">
+            <div className="pointer-events-none absolute bottom-[140px] left-1/2 z-[20] h-[44px] w-[580px] -translate-x-1/2">
               <Image
                 src="/images/photography.png"
                 alt="photography"
@@ -63,27 +94,69 @@ export default function Section3({
                 className="object-cover opacity-90"
               />
             </div>
-
           </div>
         </div>
 
-        {/* ✅ GRID — FORCE FULL HEIGHT CORRECTLY */}
-        <div className="relative z-[40] mx-auto w-full max-w-[1520px] px-6 mt-[-110px]">
-
-          {/* 💡 THIS is the real fix */}
-          <div className="h-[calc(100vh-270px)]">
-            <CategoryGrid />
+        <div className="relative z-[40] mx-auto mt-[-110px] w-full max-w-[1520px] px-6">
+          <div className="h-[calc(100vh-270px)] overflow-hidden">
+            <AnimatePresence mode="wait">
+              {galleryPage === 0 ? (
+                <motion.div
+                  key="section3-grid"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -18 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] as const }}
+                  className="h-full"
+                >
+                  <CategoryGrid
+                    categories={photographyCategories}
+                    activeId={activeCategoryId}
+                    onToggleCategory={onToggleCategory}
+                  />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={`${activeCategoryId}-${galleryPage}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -18 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] as const }}
+                  className="h-full"
+                >
+                  <CategoryFeed
+                    title={activeCategory?.galleryTitle ?? ""}
+                    photos={galleryPhotos}
+                    currentPage={galleryPage}
+                    totalPages={galleryPageCount}
+                    pageStartIndex={pageStartIndex}
+                    onPhotoClick={onOpenPhoto}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-
         </div>
       </div>
 
-      {/* BACK */}
+      <AnimatePresence>
+        {activeCategory && modalPhotoIndex !== null ? (
+          <CategoryImageModal
+            photo={activeCategory.photos[modalPhotoIndex]}
+            currentIndex={modalPhotoIndex}
+            totalPhotos={activeCategory.photos.length}
+            onClose={onClosePhoto}
+            onPrevious={onPreviousPhoto}
+            onNext={onNextPhoto}
+          />
+        ) : null}
+      </AnimatePresence>
+
       <button
         onClick={() => setSection(0)}
         className="absolute bottom-[40px] left-6 z-[100] text-5xl text-white"
       >
-        ↑
+        &uarr;
       </button>
     </section>
   );

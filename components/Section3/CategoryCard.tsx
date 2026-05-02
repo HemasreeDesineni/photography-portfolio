@@ -19,15 +19,16 @@ export default function CategoryCard({
   position?: string;
 }) {
   return (
-    <div
+    <button
+      type="button"
       onClick={onClick}
-      className="group relative h-full min-h-[360px] cursor-pointer overflow-hidden"
+      className="group relative h-full min-h-[360px] overflow-hidden text-left"
     >
-      {/* IMAGE (zoom + position controlled) */}
       <Image
         src={image}
         alt={title}
         fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
         className="object-cover"
         style={{
           transform: `scale(${zoom})`,
@@ -35,34 +36,37 @@ export default function CategoryCard({
         }}
       />
 
-      {/* OVERLAY STACK */}
       <div className="absolute inset-0 z-[1]">
-        {/* Dark layer */}
-        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition" />
-
-        {/* Green tint layer */}
-        <div className="absolute inset-0 bg-[#3d381b]/30 group-hover:bg-[#3d381b]/20 transition" />
+        <div
+          className={`absolute inset-0 transition-colors duration-300 ${
+            isActive ? "bg-black/25" : "bg-black/40 group-hover:bg-black/30"
+          }`}
+        />
+        <div
+          className={`absolute inset-0 transition-colors duration-300 ${
+            isActive
+              ? "bg-[#3d381b]/15"
+              : "bg-[#3d381b]/30 group-hover:bg-[#3d381b]/20"
+          }`}
+        />
+        <div className="absolute inset-[1px] border border-white/10" />
       </div>
 
-      {/* TITLE */}
       <div
         className="
-          absolute top-5 left-1/2 -translate-x-1/2
-          text-white text-[18px]
-          tracking-[0.28em]
-          font-[var(--font-bodoni)]
-          z-10 text-center whitespace-nowrap
+          absolute left-1/2 top-5 z-10 -translate-x-1/2
+          whitespace-nowrap text-center text-[18px] text-white
+          tracking-[0.28em] font-[var(--font-bodoni)]
         "
       >
         {title}
       </div>
 
-      {/* ARROW */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
         <motion.div
-          animate={{ rotate: isActive ? 90 : 0 }}
+          animate={{ rotate: isActive ? 90 : 0, scale: isActive ? 1.04 : 1 }}
           transition={{ duration: 0.3 }}
-          className="relative w-[90px] h-[90px]"
+          className="relative h-[90px] w-[90px]"
         >
           <Image
             src="/images/category-arrow.png"
@@ -71,11 +75,11 @@ export default function CategoryCard({
             className="
               object-contain
               brightness-110 contrast-110
-              group-hover:scale-110 transition
+              transition group-hover:scale-110
             "
           />
         </motion.div>
       </div>
-    </div>
+    </button>
   );
 }
