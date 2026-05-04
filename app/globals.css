@@ -11,3 +11,12 @@ html, body {
 body {
   font-family: "Times New Roman", Times, serif;
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

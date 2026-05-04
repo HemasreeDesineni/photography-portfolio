@@ -16,19 +16,26 @@ const photoVariants = {
 export default function CategoryFeed({
   title,
   photos,
-  currentPage,
-  totalPages,
-  pageStartIndex,
   onPhotoClick,
+  immersive = false,
 }: {
   title: string;
   photos: CategoryPhoto[];
-  currentPage: number;
-  totalPages: number;
-  pageStartIndex: number;
   onPhotoClick: (photoIndex: number) => void;
+  immersive?: boolean;
 }) {
-  const rowClass = photos.length > 3 ? "grid-rows-2" : "grid-rows-1";
+  const sectionClass = immersive
+    ? "flex min-h-full flex-col px-8 pb-8 pt-5 lg:px-14 lg:pb-10 lg:pt-6"
+    : "flex h-full flex-col pt-4";
+  const headingWrapClass = immersive
+    ? "mb-5 text-center lg:mb-6"
+    : "mb-6 text-center lg:mb-8";
+  const headingClass = immersive
+    ? "font-[var(--font-playfair)] text-[clamp(2.5rem,6vw,5rem)] italic leading-none text-[#f08a37]"
+    : "font-[var(--font-playfair)] text-[clamp(2.75rem,6vw,5.5rem)] italic leading-none text-[#f08a37]";
+  const gridClass = immersive
+    ? "grid grid-cols-3 auto-rows-[clamp(220px,calc((100vh-250px)/2),380px)] gap-x-6 gap-y-4 lg:gap-x-8 lg:gap-y-5"
+    : "grid min-h-0 flex-1 grid-cols-3 gap-5 lg:gap-7";
 
   return (
     <motion.section
@@ -36,25 +43,19 @@ export default function CategoryFeed({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -18 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] as const }}
-      className="flex h-full flex-col pt-4"
+      className={sectionClass}
     >
-      <div className="mb-6 text-center lg:mb-8">
-        <h3 className="font-[var(--font-playfair)] text-[clamp(2.75rem,6vw,5.5rem)] italic leading-none text-[#f08a37]">
+      <div className={headingWrapClass}>
+        <h3 className={headingClass}>
           {title}
         </h3>
-        {totalPages > 1 && (
-          <p className="mt-4 text-xs uppercase tracking-[0.42em] text-white/55">
-            {String(currentPage).padStart(2, "0")} /{" "}
-            {String(totalPages).padStart(2, "0")}
-          </p>
-        )}
       </div>
 
       {photos.length > 0 ? (
         <motion.div
           initial="hidden"
           animate="visible"
-          className={`grid min-h-0 flex-1 grid-cols-3 ${rowClass} gap-5 lg:gap-7`}
+          className={gridClass}
         >
           {photos.map((photo, index) => (
             <motion.button
@@ -62,8 +63,8 @@ export default function CategoryFeed({
               type="button"
               variants={photoVariants}
               whileHover={{ y: -6 }}
-              onClick={() => onPhotoClick(pageStartIndex + index)}
-              className="group relative min-h-0 overflow-hidden bg-black/20 shadow-[0_22px_50px_rgba(0,0,0,0.22)]"
+              onClick={() => onPhotoClick(index)}
+              className="group relative h-full min-h-0 w-full overflow-hidden bg-black/20 shadow-[0_22px_50px_rgba(0,0,0,0.22)]"
             >
               <Image
                 src={photo.src}

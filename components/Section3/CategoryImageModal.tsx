@@ -239,7 +239,7 @@ export default function CategoryImageModal({
               <button
                 type="button"
                 onClick={() => void toggleFullscreen()}
-                className="absolute bottom-4 right-4 z-10 flex h-12 w-12 items-center justify-center bg-black/35 text-white transition hover:bg-white/12"
+                className="absolute bottom-4 right-4 z-10 flex h-12 w-12 items-center justify-center text-white transition hover:opacity-75"
                 aria-label={isFullscreen ? "Exit full screen" : "Open full screen"}
               >
                 {isFullscreen ? <FullscreenExitIcon /> : <FullscreenEnterIcon />}
