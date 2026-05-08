@@ -49,7 +49,6 @@ export default function CategoryCard({
               : "bg-[#3d381b]/30 group-hover:bg-[#3d381b]/20"
           }`}
         />
-        <div className="absolute inset-[1px] border border-white/10" />
       </div>
 
       <div
