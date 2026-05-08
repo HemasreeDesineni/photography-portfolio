@@ -13,6 +13,8 @@ export type CategoryDefinition = {
   titleImage: string;
   titleScale?: number;
   galleryTitle: string;
+  galleryTitleImage?: string;
+  galleryTitleScale?: number;
   image: string;
   zoom?: number;
   position?: string;
@@ -26,6 +28,8 @@ export const photographyCategories: CategoryDefinition[] = [
     titleImage: "/images/conceptual-title1.png",
     titleScale: 41,
     galleryTitle: "Conceptual",
+    galleryTitleImage: "/images/conceptual-title2.png",
+    galleryTitleScale: 6,
     image: "/images/conceptual.jpg",
     zoom: 1,
     position: "center",
@@ -45,6 +49,8 @@ export const photographyCategories: CategoryDefinition[] = [
     title: "ARANGETRAM",
     titleImage: "/images/arangetram-title1.png",
     galleryTitle: "Arangetram",
+    galleryTitleImage: "/images/arangetram-title2.png",
+    galleryTitleScale: 5.5,
     image: "/images/arangetram.jpg",
     zoom: 1,
     position: "center",
@@ -55,6 +61,8 @@ export const photographyCategories: CategoryDefinition[] = [
     title: "INDOOR",
     titleImage: "/images/indoor-title1.png",
     galleryTitle: "Indoor",
+    galleryTitleImage: "/images/indoor-title2.png",
+    galleryTitleScale: 7.5,
     image: "/images/indoor.jpg",
     zoom: 1,
     position: "center",
@@ -65,6 +73,8 @@ export const photographyCategories: CategoryDefinition[] = [
     title: "PERFORMANCES",
     titleImage: "/images/performances-title1.png",
     galleryTitle: "Performances",
+    galleryTitleImage: "/images/performances-title2.png",
+    galleryTitleScale: 5.3,
     image: "/images/performances.jpg",
     zoom: 1.2,
     position: "center top",

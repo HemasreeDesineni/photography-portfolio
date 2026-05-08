@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { CategoryPhoto } from "./categoryData";
+import TransparentImageLabel from "./TransparentImageLabel";
 
 const photoVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -15,11 +16,15 @@ const photoVariants = {
 
 export default function CategoryFeed({
   title,
+  titleImage,
+  titleScale = 5.5,
   photos,
   onPhotoClick,
   immersive = false,
 }: {
   title: string;
+  titleImage?: string;
+  titleScale?: number;
   photos: CategoryPhoto[];
   onPhotoClick: (photoIndex: number) => void;
   immersive?: boolean;
@@ -33,6 +38,9 @@ export default function CategoryFeed({
   const headingClass = immersive
     ? "font-[var(--font-playfair)] text-[clamp(2.5rem,6vw,5rem)] italic leading-none text-[#f08a37]"
     : "font-[var(--font-playfair)] text-[clamp(2.75rem,6vw,5.5rem)] italic leading-none text-[#f08a37]";
+  const headingImageClass = immersive
+    ? "mx-auto h-[clamp(72px,10vw,118px)] w-[min(84vw,560px)]"
+    : "mx-auto h-[clamp(78px,10vw,126px)] w-[min(88vw,600px)]";
   const gridClass = immersive
     ? "grid grid-cols-3 auto-rows-[clamp(220px,calc((100vh-250px)/2),380px)] gap-x-6 gap-y-4 lg:gap-x-8 lg:gap-y-5"
     : "grid min-h-0 flex-1 grid-cols-3 gap-5 lg:gap-7";
@@ -46,9 +54,19 @@ export default function CategoryFeed({
       className={sectionClass}
     >
       <div className={headingWrapClass}>
-        <h3 className={headingClass}>
-          {title}
-        </h3>
+        {titleImage ? (
+          <TransparentImageLabel
+            src={titleImage}
+            alt={title}
+            scale={titleScale}
+            sizes="560px"
+            className={headingImageClass}
+          />
+        ) : (
+          <h3 className={headingClass}>
+            {title}
+          </h3>
+        )}
       </div>
 
       {photos.length > 0 ? (

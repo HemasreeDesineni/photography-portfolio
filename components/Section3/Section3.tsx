@@ -76,6 +76,8 @@ export default function Section3({
             >
               <CategoryFeed
                 title={activeCategory?.galleryTitle ?? ""}
+                titleImage={activeCategory?.galleryTitleImage}
+                titleScale={activeCategory?.galleryTitleScale}
                 photos={galleryPhotos}
                 onPhotoClick={onOpenPhoto}
                 immersive
