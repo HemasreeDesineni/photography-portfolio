@@ -7,6 +7,7 @@ import TransparentImageLabel from "./TransparentImageLabel";
 export default function CategoryCard({
   title,
   titleImage,
+  titleScale = 39,
   image,
   isActive,
   onClick,
@@ -15,6 +16,7 @@ export default function CategoryCard({
 }: {
   title: string;
   titleImage: string;
+  titleScale?: number;
   image: string;
   isActive: boolean;
   onClick: () => void;
@@ -59,7 +61,7 @@ export default function CategoryCard({
         <TransparentImageLabel
           src={titleImage}
           alt={title}
-          scale={39}
+          scale={titleScale}
           sizes="240px"
           className="h-[20px] w-full max-w-[220px] md:h-[22px] md:max-w-[230px] xl:h-[24px] xl:max-w-[240px]"
         />

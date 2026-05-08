@@ -11,6 +11,7 @@ export type CategoryDefinition = {
   id: string;
   title: string;
   titleImage: string;
+  titleScale?: number;
   galleryTitle: string;
   image: string;
   zoom?: number;
@@ -23,6 +24,7 @@ export const photographyCategories: CategoryDefinition[] = [
     id: "conceptual",
     title: "CONCEPTUAL",
     titleImage: "/images/conceptual-title1.png",
+    titleScale: 41,
     galleryTitle: "Conceptual",
     image: "/images/conceptual.jpg",
     zoom: 1,
