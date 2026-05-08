@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import CategoryGrid from "../Section3/CategoryGrid";
+import SectionContactButton from "../Section3/SectionContactButton";
 
 export default function Section4({
   setSection,
@@ -10,14 +11,7 @@ export default function Section4({
 }) {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
-
-      {/* CONTACT */}
-      <div
-        onClick={() => setSection(4)}
-        className="absolute top-5 right-6 z-[100] text-[18px] tracking-[0.25em] text-white cursor-pointer"
-      >
-        CONTACT
-      </div>
+      <SectionContactButton onClick={() => setSection(4)} />
 
       {/* TITLE — EXACT SAME AS SECTION 3 */}
       <div className="pointer-events-none absolute left-1/2 top-[70px] -translate-x-1/2 z-[50] h-[70px] w-[1000px]">

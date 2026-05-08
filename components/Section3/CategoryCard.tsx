@@ -59,9 +59,9 @@ export default function CategoryCard({
         <TransparentImageLabel
           src={titleImage}
           alt={title}
-          scale={45}
-          sizes="260px"
-          className="h-[20px] w-full max-w-[220px] md:h-[22px] md:max-w-[240px] xl:h-[24px] xl:max-w-[260px]"
+          scale={39}
+          sizes="240px"
+          className="h-[20px] w-full max-w-[220px] md:h-[22px] md:max-w-[230px] xl:h-[24px] xl:max-w-[240px]"
         />
       </div>
 

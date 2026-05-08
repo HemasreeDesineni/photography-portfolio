@@ -16,7 +16,7 @@ export default function TransparentImageLabel({
   priority?: boolean;
 }) {
   return (
-    <div className={`pointer-events-none relative overflow-hidden ${className}`}>
+    <div className={`pointer-events-none relative ${className}`}>
       <div
         className="absolute inset-0 transform-gpu"
         style={{ transform: `scale(${scale})`, transformOrigin: "center" }}
