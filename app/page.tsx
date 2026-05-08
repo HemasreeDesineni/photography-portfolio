@@ -91,6 +91,11 @@ export default function Home() {
     lockNavigation(700);
   };
 
+  const collapseSection3Expansion = useEffectEvent(() => {
+    resetSection3Expansion();
+    lockNavigation(450);
+  });
+
   const navigateBetweenSections = useEffectEvent(
     (direction: "up" | "down") => {
       if (isAnimating) return;
@@ -201,6 +206,12 @@ export default function Home() {
           e.preventDefault();
           return;
         }
+
+        if (direction === "up") {
+          e.preventDefault();
+          collapseSection3Expansion();
+          return;
+        }
       }
 
       navigateBetweenSections(direction);
@@ -236,6 +247,11 @@ export default function Home() {
           section3ActiveCategoryId &&
           scrollExpandedGallery("up", 320)
         ) {
+          return;
+        }
+
+        if (section === 2 && section3ActiveCategoryId) {
+          collapseSection3Expansion();
           return;
         }
 
