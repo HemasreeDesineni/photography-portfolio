@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import TransparentImageLabel from "./TransparentImageLabel";
 
 export default function CategoryCard({
   title,
+  titleImage,
   image,
   isActive,
   onClick,
@@ -12,6 +14,7 @@ export default function CategoryCard({
   position = "center",
 }: {
   title: string;
+  titleImage: string;
   image: string;
   isActive: boolean;
   onClick: () => void;
@@ -22,11 +25,12 @@ export default function CategoryCard({
     <button
       type="button"
       onClick={onClick}
+      aria-label={title}
       className="group relative h-full min-h-[360px] overflow-hidden text-left"
     >
       <Image
         src={image}
-        alt={title}
+        alt=""
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
         className="object-cover"
@@ -51,14 +55,14 @@ export default function CategoryCard({
         />
       </div>
 
-      <div
-        className="
-          absolute left-1/2 top-5 z-10 -translate-x-1/2
-          whitespace-nowrap text-center text-[18px] text-white
-          tracking-[0.28em] font-[var(--font-bodoni)]
-        "
-      >
-        {title}
+      <div className="absolute inset-x-0 top-5 z-10 flex justify-center px-4">
+        <TransparentImageLabel
+          src={titleImage}
+          alt={title}
+          scale={45}
+          sizes="260px"
+          className="h-[20px] w-full max-w-[220px] md:h-[22px] md:max-w-[240px] xl:h-[24px] xl:max-w-[260px]"
+        />
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center">
@@ -69,7 +73,7 @@ export default function CategoryCard({
         >
           <Image
             src="/images/category-arrow.png"
-            alt="arrow"
+            alt=""
             fill
             className="
               object-contain

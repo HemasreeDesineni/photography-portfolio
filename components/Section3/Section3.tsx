@@ -6,7 +6,27 @@ import type { RefObject } from "react";
 import CategoryGrid from "./CategoryGrid";
 import CategoryFeed from "./CategoryFeed";
 import CategoryImageModal from "./CategoryImageModal";
+import TransparentImageLabel from "./TransparentImageLabel";
 import { photographyCategories } from "./categoryData";
+
+function Section3ContactButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Contact"
+      className="absolute right-6 top-5 z-[100] cursor-pointer bg-transparent p-0"
+    >
+      <TransparentImageLabel
+        src="/images/contact-page3.png"
+        alt="Contact"
+        scale={82}
+        sizes="170px"
+        className="h-[18px] w-[140px] md:h-[20px] md:w-[156px] xl:h-[22px] xl:w-[170px]"
+      />
+    </button>
+  );
+}
 
 export default function Section3({
   setSection,
@@ -58,12 +78,7 @@ export default function Section3({
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
       {isExpanded ? (
         <div className="flex h-full flex-col">
-          <div
-            onClick={() => setSection(4)}
-            className="absolute right-6 top-5 z-[100] cursor-pointer text-[18px] tracking-[0.25em] text-white"
-          >
-            CONTACT
-          </div>
+          <Section3ContactButton onClick={() => setSection(4)} />
 
           <div
             ref={galleryViewportRef}
@@ -103,12 +118,7 @@ export default function Section3({
 
               <div className="absolute inset-0 bg-[#3d381b]/45" />
 
-              <div
-                onClick={() => setSection(4)}
-                className="absolute right-6 top-5 z-[100] cursor-pointer text-[18px] tracking-[0.25em] text-white"
-              >
-                CONTACT
-              </div>
+              <Section3ContactButton onClick={() => setSection(4)} />
 
               <motion.div
                 initial={{ opacity: 0, filter: "blur(10px)" }}

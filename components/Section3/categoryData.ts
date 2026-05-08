@@ -10,6 +10,7 @@ export type CategoryPhoto = {
 export type CategoryDefinition = {
   id: string;
   title: string;
+  titleImage: string;
   galleryTitle: string;
   image: string;
   zoom?: number;
@@ -21,6 +22,7 @@ export const photographyCategories: CategoryDefinition[] = [
   {
     id: "conceptual",
     title: "CONCEPTUAL",
+    titleImage: "/images/conceptual-title1.png",
     galleryTitle: "Conceptual",
     image: "/images/conceptual.jpg",
     zoom: 1,
@@ -39,6 +41,7 @@ export const photographyCategories: CategoryDefinition[] = [
   {
     id: "arangetram",
     title: "ARANGETRAM",
+    titleImage: "/images/arangetram-title1.png",
     galleryTitle: "Arangetram",
     image: "/images/arangetram.jpg",
     zoom: 1,
@@ -48,6 +51,7 @@ export const photographyCategories: CategoryDefinition[] = [
   {
     id: "indoor",
     title: "INDOOR",
+    titleImage: "/images/indoor-title1.png",
     galleryTitle: "Indoor",
     image: "/images/indoor.jpg",
     zoom: 1,
@@ -57,6 +61,7 @@ export const photographyCategories: CategoryDefinition[] = [
   {
     id: "performances",
     title: "PERFORMANCES",
+    titleImage: "/images/performances-title1.png",
     galleryTitle: "Performances",
     image: "/images/performances.jpg",
     zoom: 1.2,
