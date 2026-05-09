@@ -14,7 +14,7 @@ export default function Section4({
       <SectionContactButton onClick={() => setSection(4)} />
 
       {/* TITLE — EXACT SAME AS SECTION 3 */}
-      <div className="pointer-events-none absolute left-1/2 top-[70px] -translate-x-1/2 z-[50] h-[70px] w-[1000px]">
+      <div className="pointer-events-none absolute left-1/2 top-[70px] z-[50] h-[82px] w-[1180px] -translate-x-1/2 md:h-[88px] md:w-[1260px] xl:h-[96px] xl:w-[1380px]">
         <Image
           src="/images/videography.png"
           alt="videography"
