@@ -6,6 +6,7 @@ import type { RefObject } from "react";
 import CategoryGrid from "./CategoryGrid";
 import CategoryFeed from "./CategoryFeed";
 import CategoryImageModal from "./CategoryImageModal";
+import SectionContactButton from "./SectionContactButton";
 import { photographyCategories } from "./categoryData";
 
 const section3ViewTransition = {
@@ -62,6 +63,8 @@ export default function Section3({
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
+      <SectionContactButton onClick={() => setSection(4)} />
+
       <AnimatePresence mode="wait" initial={false}>
         {isExpanded ? (
           <motion.div
