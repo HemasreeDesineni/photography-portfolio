@@ -151,12 +151,14 @@ export default function Home() {
       setSection3GalleryProgress(0);
       setSection3ModalPhotoIndex(null);
       section3GalleryViewportRef.current?.scrollTo({ top: 0, behavior: "auto" });
+      lockNavigation(550);
       return;
     }
 
     setSection3ActiveCategoryId(categoryId);
     setSection3GalleryProgress(0);
     setSection3ModalPhotoIndex(null);
+    lockNavigation(550);
   };
 
   const handleSection3PhotoOpen = (photoIndex: number) => {
