@@ -23,7 +23,7 @@ export default function Section5({
             className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1400px] h-[700px]"
           >
             <Image
-              src="/images/reach-me.png"
+              src="/images/reach-me.webp"
               alt="reach"
               fill
               className="object-contain scale-125"
@@ -55,7 +55,7 @@ export default function Section5({
             className="absolute top-[300px] left-[580px] -translate-x-1/2 w-[1100px] h-[400px]"
           >
             <Image
-              src="/images/something-amazing.png"
+              src="/images/something-amazing.webp"
               alt="something"
               fill
               className="object-contain scale-110"

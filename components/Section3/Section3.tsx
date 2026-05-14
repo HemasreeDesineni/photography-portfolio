@@ -163,7 +163,7 @@ export default function Section3({
               "
               >
                 <Image
-                  src="/images/visual-portfolio.png"
+                  src="/images/visual-portfolio.webp"
                   alt="visual portfolio"
                   fill
                   // priority
