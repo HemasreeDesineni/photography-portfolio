@@ -111,7 +111,7 @@ export default function Section3({
               <motion.div
                 initial={{
                   opacity: 0,
-                  filter: "blur(24px)",
+                  filter: "blur(12px)",
                 }}
                 animate={{
                   opacity: 1,
@@ -124,7 +124,7 @@ export default function Section3({
                 className="absolute inset-0"
               >
                 <Image
-                  src="/images/page3banner.jpeg"
+                  src="/images/page3banner.jpg"
                   alt="Page 3 banner"
                   fill
                   priority
@@ -140,7 +140,7 @@ export default function Section3({
               <motion.div
                 initial={{
                   opacity: 0,
-                  filter: "blur(24px)",
+                  filter: "blur(12px)",
                 }}
                 animate={{
                   opacity: 1,
@@ -166,7 +166,7 @@ export default function Section3({
                   src="/images/visual-portfolio.png"
                   alt="visual portfolio"
                   fill
-                  priority
+                  // priority
                   className="object-contain opacity-90"
                 />
               </motion.div>
@@ -205,7 +205,7 @@ export default function Section3({
                   src="/images/photography.png"
                   alt="photography"
                   fill
-                  priority
+                  // priority
                   className="object-contain"
                 />
               </motion.div>
