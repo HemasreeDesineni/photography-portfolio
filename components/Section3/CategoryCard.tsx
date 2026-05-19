@@ -129,7 +129,7 @@ export default function CategoryCard({
           className="relative h-[90px] w-[90px]"
         >
           <Image
-            src="/images/category-arrow.png"
+            src="/images/category-arrow.webp"
             alt=""
             fill
             className="
