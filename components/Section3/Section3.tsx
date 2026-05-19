@@ -121,7 +121,7 @@ export default function Section3({
                   duration: 2,
                   ease: cinematicEase,
                 }}
-                className="absolute inset-0"
+                className="absolute inset-0 will-change-transform will-change-opacity"
               >
                 <Image
                   src="/images/page3banner.jpg"
@@ -160,6 +160,8 @@ export default function Section3({
                 h-[750px]
                 w-[1800px]
                 -translate-x-1/2
+                will-change-transform
+                will-change-opacity
               "
               >
                 <Image
@@ -199,6 +201,8 @@ export default function Section3({
                   h-[320px]
                   w-[1600px]
                   -translate-x-1/2
+                  will-change-transform
+                  will-change-opacity
                 "
               >
                 <Image
