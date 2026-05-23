@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 🔥 important */
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
   font-family: "Times New Roman", Times, serif;
+  overflow-x: hidden;
+  background: black;
 }
 
 .hide-scrollbar {
@@ -19,4 +23,29 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* DESKTOP ONLY */
+@media (min-width: 1025px) {
+  html,
+  body {
+    overflow: hidden;
+  }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 1024px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-y: auto;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
 }
