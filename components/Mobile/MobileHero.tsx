@@ -13,7 +13,7 @@ export default function MobileHero() {
       <div className="absolute top-0 left-0 z-30 h-[92px] w-full bg-[#7a0000]" />
 
       {/* BOTTOM RED STRIP */}
-      <div className="absolute bottom-0 left-0 z-30 h-[48px] w-full bg-[#7a0000]" />
+      {/* <div className="absolute bottom-0 left-0 z-30 h-[48px] w-full bg-[#7a0000]" /> */}
 
       {/* HERO IMAGE */}
       <motion.div
@@ -39,8 +39,8 @@ export default function MobileHero() {
             sizes="100vw"
             className="object-cover"
             style={{
-                objectPosition: "60% center",
-                transform: "scale(1.12)",
+                objectPosition: "58% center",
+                transform: "scale(1.18)",
             }}
         />
       </motion.div>
@@ -54,7 +54,7 @@ export default function MobileHero() {
         {/* TOP BAR */}
         <div className="flex h-[72px] items-center justify-between px-5">
 
-          <motion.h1
+          {/* <motion.h1
             initial={{
                 opacity: 0,
                 y: -20,
@@ -84,7 +84,38 @@ export default function MobileHero() {
             }}
             >
             Goutham Photography
-          </motion.h1>
+          </motion.h1> */}
+
+          <motion.div
+            initial={{
+                opacity: 0,
+                y: -20,
+            }}
+            animate={{
+                opacity: 1,
+                y: 0,
+            }}
+            transition={{
+                duration: 1.2,
+                ease: cinematicEase,
+            }}
+            className="
+                absolute
+                left-[-430px]
+                top-[-408px]
+                z-50
+                h-[1000px]
+                w-[1300px]
+            "
+            >
+            <Image
+                src="/images/hero-title.png"
+                alt="Goutham Photography"
+                fill
+                priority
+                className="object-contain"
+            />
+          </motion.div>
 
           <button
             className="
