@@ -35,6 +35,7 @@ export default function MobileHero() {
             src="/images/hero-bg.jpg"
             alt="Hero"
             fill
+            quality={100}
             priority
             sizes="100vw"
             className="object-cover"
@@ -112,6 +113,7 @@ export default function MobileHero() {
                 src="/images/hero-title.png"
                 alt="Goutham Photography"
                 fill
+                quality={100}
                 priority
                 className="object-contain"
                 style={{
@@ -179,6 +181,7 @@ export default function MobileHero() {
                 src="/images/through-my.png"
                 alt="Through My"
                 fill
+                quality={100}
                 sizes="220px"
                 className="object-contain"
               />
@@ -200,6 +203,7 @@ export default function MobileHero() {
                 src="/images/hero-text.png"
                 alt="Eyes"
                 fill
+                quality={100}
                 sizes="300px"
                 className="object-contain"
               />
