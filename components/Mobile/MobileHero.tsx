@@ -101,11 +101,11 @@ export default function MobileHero() {
             }}
             className="
                 absolute
-                left-[-430px]
+                left-[-470px]
                 top-[-408px]
                 z-50
                 h-[1000px]
-                w-[1300px]
+                w-[1400px]
             "
             >
             <Image
@@ -114,6 +114,9 @@ export default function MobileHero() {
                 fill
                 priority
                 className="object-contain"
+                style={{
+                  filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
+                }}
             />
           </motion.div>
 
@@ -152,25 +155,52 @@ export default function MobileHero() {
               delay: 0.3,
               ease: cinematicEase,
             }}
-            className="relative flex flex-col items-center"
+            className="
+              relative
+              h-[520px]
+              w-[700px]
+              -translate-y-[40px]
+            "
           >
 
             {/* THROUGH MY */}
-            <div className="relative h-[300px] w-[550px]">
+            <div
+              className="
+                absolute
+                left-1/2
+                top-[70px]
+                h-[300px]
+                w-[550px]
+                -translate-x-1/2
+                z-20
+              "
+            >
               <Image
                 src="/images/through-my.png"
                 alt="Through My"
                 fill
+                sizes="220px"
                 className="object-contain"
               />
             </div>
 
             {/* EYES */}
-            <div className="relative -mt-4 h-[520px] w-[700px]">
+            <div
+              className="
+                absolute
+                left-1/2
+                top-[10px]
+                h-[520px]
+                w-[700px]
+                -translate-x-1/2
+                z-10
+              "
+            >
               <Image
                 src="/images/hero-text.png"
                 alt="Eyes"
                 fill
+                sizes="300px"
                 className="object-contain"
               />
             </div>
