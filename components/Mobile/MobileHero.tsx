@@ -40,7 +40,7 @@ export default function MobileHero() {
             className="object-cover"
             style={{
                 objectPosition: "58% center",
-                transform: "scale(1.18)",
+                transform: "scale(1)",
             }}
         />
       </motion.div>
@@ -168,9 +168,9 @@ export default function MobileHero() {
               className="
                 absolute
                 left-1/2
-                top-[70px]
-                h-[300px]
-                w-[550px]
+                top-[55px]
+                h-[350px]
+                w-[600px]
                 -translate-x-1/2
                 z-20
               "
