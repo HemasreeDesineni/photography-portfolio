@@ -34,14 +34,18 @@ export default function MobileHero() {
         <Image
             src="/images/hero-bg-mobile.jpg"
             alt="Hero"
-            fill
-            quality={95}
+            width={1179}
+            height={2556}
             priority
+            quality={95}
             sizes="100vw"
-            className="object-cover"
+            className="
+              h-full
+              w-full
+              object-cover
+            "
             style={{
-                objectPosition: "58% center",
-                transform: "scale(1)",
+              objectPosition: "58% center",
             }}
         />
       </motion.div>
@@ -70,25 +74,19 @@ export default function MobileHero() {
             }}
             className="
               absolute
-              left-1/2
-              top-[76px]
+              left-[10px]
+              top-[-30px]
               z-50
-              h-[42px]
-              w-[320px]
               -translate-x-1/2
             "
           >
             <Image
-              src="/images/hero-title.png"
+              src="/images/hero-title.svg"
               alt="Goutham Photography"
-              fill
+              width={450}
+              height={42}
               priority
-              quality={100}
-              sizes="320px"
-              className="object-contain"
-              style={{
-                imageRendering: "auto",
-              }}
+              unoptimized
             />
           </motion.div>
 
@@ -127,7 +125,7 @@ export default function MobileHero() {
             }}
             className="
               relative
-              h-[420px]
+              h-[520px]
               w-[390px]
               -translate-y-[40px]
             "
@@ -139,8 +137,8 @@ export default function MobileHero() {
                 absolute
                 left-1/2
                 top-[55px]
-                h-[180px]
-                w-[280px]
+                h-[350px]
+                w-[500px]
                 -translate-x-1/2
                 z-20
               "
@@ -164,8 +162,8 @@ export default function MobileHero() {
                 absolute
                 left-1/2
                 top-[10px]
-                h-[320px]
-                w-[360px]
+                h-[520px]
+                w-[660px]
                 -translate-x-1/2
                 z-10
               "
