@@ -7,7 +7,7 @@ const cinematicEase = [0.22, 1, 0.36, 1] as const;
 
 export default function MobileSection2() {
   return (
-    <section className="relative min-h-[135svh] overflow-hidden bg-black text-white">
+    <section className="relative min-h-[100svh] overflow-hidden bg-black text-white">
 
       {/* BACKGROUND IMAGE */}
       <motion.div
@@ -39,7 +39,7 @@ export default function MobileSection2() {
             object-cover
           "
           style={{
-            objectPosition: "50% center",
+            objectPosition: "50% 42%",
           }}
         />
       </motion.div>
@@ -104,7 +104,7 @@ export default function MobileSection2() {
       <div
         className="
           absolute
-          top-[250px]
+          top-[50px]
           left-[-10%]
           z-40
           h-[260px]
