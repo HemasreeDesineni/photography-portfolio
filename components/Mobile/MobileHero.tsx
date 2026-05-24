@@ -35,7 +35,7 @@ export default function MobileHero() {
             src="/images/hero-bg-mobile.jpg"
             alt="Hero"
             fill
-            quality={100}
+            quality={95}
             priority
             sizes="100vw"
             className="object-cover"
@@ -55,70 +55,40 @@ export default function MobileHero() {
         {/* TOP BAR */}
         <div className="flex h-[72px] items-center justify-between px-5">
 
-          {/* <motion.h1
-            initial={{
-                opacity: 0,
-                y: -20,
-            }}
-            animate={{
-                opacity: 1,
-                y: 0,
-            }}
-            transition={{
-                duration: 1.2,
-                ease: cinematicEase,
-            }}
-            className="
-                absolute
-                left-4
-                top-[42px]
-                z-50
-                max-w-[150px]
-                text-[1.1rem]
-                leading-[1]
-                tracking-[-0.03em]
-                text-white
-            "
-            style={{
-                fontFamily: "serif",
-                textShadow: "0 4px 14px rgba(0,0,0,0.45)",
-            }}
-            >
-            Goutham Photography
-          </motion.h1> */}
-
           <motion.div
             initial={{
-                opacity: 0,
-                y: -20,
+              opacity: 0,
+              y: -20,
             }}
             animate={{
-                opacity: 1,
-                y: 0,
+              opacity: 1,
+              y: 0,
             }}
             transition={{
-                duration: 1.2,
-                ease: cinematicEase,
+              duration: 1.2,
+              ease: cinematicEase,
             }}
             className="
-                absolute
-                left-[-280px]
-                top-[-310px]
-                z-50
-                h-[800px]
-                w-[1000px]
+              absolute
+              left-1/2
+              top-[76px]
+              z-50
+              h-[42px]
+              w-[320px]
+              -translate-x-1/2
             "
-            >
+          >
             <Image
-                src="/images/hero-title.png"
-                alt="Goutham Photography"
-                fill
-                quality={100}
-                priority
-                className="object-contain"
-                style={{
-                  filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
-                }}
+              src="/images/hero-title.png"
+              alt="Goutham Photography"
+              fill
+              priority
+              quality={100}
+              sizes="320px"
+              className="object-contain"
+              style={{
+                imageRendering: "auto",
+              }}
             />
           </motion.div>
 
@@ -144,13 +114,11 @@ export default function MobileHero() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 60,
-              filter: "blur(12px)",
+              y: 40,
             }}
             animate={{
               opacity: 1,
               y: 0,
-              filter: "blur(0px)",
             }}
             transition={{
               duration: 1.8,
@@ -159,8 +127,8 @@ export default function MobileHero() {
             }}
             className="
               relative
-              h-[520px]
-              w-[700px]
+              h-[420px]
+              w-[390px]
               -translate-y-[40px]
             "
           >
@@ -171,8 +139,8 @@ export default function MobileHero() {
                 absolute
                 left-1/2
                 top-[55px]
-                h-[350px]
-                w-[600px]
+                h-[180px]
+                w-[280px]
                 -translate-x-1/2
                 z-20
               "
@@ -184,6 +152,9 @@ export default function MobileHero() {
                 quality={100}
                 sizes="220px"
                 className="object-contain"
+                style={{
+                  imageRendering: "auto",
+                }}
               />
             </div>
 
@@ -193,8 +164,8 @@ export default function MobileHero() {
                 absolute
                 left-1/2
                 top-[10px]
-                h-[520px]
-                w-[700px]
+                h-[320px]
+                w-[360px]
                 -translate-x-1/2
                 z-10
               "
@@ -206,6 +177,9 @@ export default function MobileHero() {
                 quality={100}
                 sizes="300px"
                 className="object-contain"
+                style={{
+                  imageRendering: "auto",
+                }}
               />
             </div>
 
