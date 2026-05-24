@@ -32,7 +32,7 @@ export default function MobileHero() {
         className="absolute inset-0"
       >
         <Image
-            src="/images/hero-bg.jpg"
+            src="/images/hero-bg-mobile.jpg"
             alt="Hero"
             fill
             quality={100}
@@ -102,11 +102,11 @@ export default function MobileHero() {
             }}
             className="
                 absolute
-                left-[-470px]
-                top-[-408px]
+                left-[-280px]
+                top-[-310px]
                 z-50
-                h-[1000px]
-                w-[1400px]
+                h-[800px]
+                w-[1000px]
             "
             >
             <Image
