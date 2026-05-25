@@ -30,7 +30,7 @@ export default function CategoryCard({
       type="button"
       onClick={onClick}
       aria-label={title}
-      className="group relative h-full min-h-[360px] overflow-hidden text-left"
+      className="group relative h-full w-full overflow-hidden rounded-[2px] text-left"
     >
       {/* IMAGE */}
       <motion.div
