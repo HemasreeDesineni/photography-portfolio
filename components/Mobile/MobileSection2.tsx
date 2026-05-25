@@ -7,7 +7,7 @@ const cinematicEase = [0.22, 1, 0.36, 1] as const;
 
 export default function MobileSection2() {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-black text-white">
+    <section className="relative h-[100svh] overflow-hidden bg-black text-white">
 
       {/* BACKGROUND IMAGE */}
       <motion.div
@@ -70,7 +70,17 @@ export default function MobileSection2() {
           absolute
           inset-0
           z-10
-          bg-[#8a5a2b]/50
+          bg-[#8a5a2b]/35
+        "
+      />
+
+      {/* CINEMATIC VIGNETTE */}
+      <div
+        className="
+          absolute
+          inset-0
+          z-20
+          bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.32)_100%)]
         "
       />
 
@@ -146,6 +156,9 @@ export default function MobileSection2() {
             priority
             quality={100}
             className="h-auto w-full object-contain"
+            style={{
+              filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.35))",
+            }}
           />
         </motion.div>
 
@@ -183,10 +196,53 @@ export default function MobileSection2() {
             priority
             quality={100}
             className="h-auto w-full object-contain"
+            style={{
+              filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.35))",
+            }}
           />
         </motion.div>
 
       </div>
+
+      {/* PARAGRAPH BLOCK */}
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 30,
+          filter: "blur(12px)",
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+        }}
+        transition={{
+          duration: 2,
+          delay: 0.45,
+          ease: cinematicEase,
+        }}
+        className="
+          absolute
+          left-[-34%]
+          top-[100px]
+          z-30
+          w-[720px]
+          -translate-x-1/2
+        "
+      >
+        <Image
+          src="/images/page2-white-text.png"
+          alt="Section 2 Text"
+          width={1300}
+          height={600}
+          priority
+          quality={100}
+          className="h-auto w-full object-contain"
+          style={{
+            filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.25))",
+          }}
+        />
+      </motion.div>
     </section>
   );
 }
