@@ -156,9 +156,6 @@ export default function MobileSection2() {
             priority
             quality={100}
             className="h-auto w-full object-contain"
-            style={{
-              filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.35))",
-            }}
           />
         </motion.div>
 
@@ -196,9 +193,6 @@ export default function MobileSection2() {
             priority
             quality={100}
             className="h-auto w-full object-contain"
-            style={{
-              filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.35))",
-            }}
           />
         </motion.div>
 
