@@ -243,6 +243,38 @@ export default function MobileSection2() {
           }}
         />
       </motion.div>
+
+      {/* SCROLL INDICATOR */}
+      <motion.div
+        animate={{
+          y: [0, 10, 0],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          absolute
+          bottom-[22px]
+          left-1/2
+          z-50
+          -translate-x-1/2
+        "
+      >
+        <div
+          className="
+            text-[28px]
+            text-[#e0c08f]
+            opacity-80
+          "
+          style={{
+            textShadow: "0 2px 10px rgba(0,0,0,0.35)",
+          }}
+        >
+          ↓
+        </div>
+      </motion.div>
     </section>
   );
 }
