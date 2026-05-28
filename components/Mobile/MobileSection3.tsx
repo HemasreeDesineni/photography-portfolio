@@ -135,7 +135,7 @@ export default function MobileSection3() {
             <div
               key={cat.id}
               className="
-                w-[82vw]
+                w-[65vw]
                 shrink-0
                 snap-center
               "
