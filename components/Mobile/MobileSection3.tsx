@@ -97,7 +97,7 @@ export default function MobileSection3() {
           className="
             pointer-events-none
             absolute
-            left-1/2
+            left-[10px]
             top-[90px]
             z-20
             h-[110px]
