@@ -65,7 +65,7 @@ export default function MobileSection3() {
             top-[-100px]
             z-20
             h-[400px]
-            w-[130vw]
+            w-[140vw]
             -translate-x-1/2
           "
         >
@@ -97,7 +97,7 @@ export default function MobileSection3() {
           className="
             pointer-events-none
             absolute
-            left-[-340px]
+            left-[-80%]
             top-[50px]
             z-20
             h-[300px]
