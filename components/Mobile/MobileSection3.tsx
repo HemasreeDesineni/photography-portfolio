@@ -149,7 +149,11 @@ export default function MobileSection3() {
                   isActive={false}
                   onClick={() => {}}
                   zoom={cat.zoom}
-                  position={cat.position}
+                  position={
+                    cat.id === "conceptual"
+                      ? "60% center"
+                      : cat.position
+                  }
                 />
               </div>
             </div>
