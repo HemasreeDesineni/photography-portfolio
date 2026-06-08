@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import type { CategoryPhoto } from "./categoryData";
+import type { CategoryPhoto } from "../Section3/categoryData";
 
 function CloseIcon() {
   return (
