@@ -157,15 +157,15 @@ export default function Section3({
                 left-[53%]
                 top-[-240px]
                 z-20
-                h-[750px]
-                w-[1800px]
+                h-[780px]
+                w-[1000px]
                 -translate-x-1/2
                 will-change-transform
                 will-change-opacity
               "
               >
                 <Image
-                  src="/images/visual-portfolio.webp"
+                  src="/images/visual-portfolio.svg"
                   alt="visual portfolio"
                   fill
                   // priority

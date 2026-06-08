@@ -64,13 +64,13 @@ export default function MobileSection3() {
             left-1/2
             top-[-100px]
             z-20
-            h-[400px]
-            w-[140vw]
+            h-[430px]
+            w-[90vw]
             -translate-x-1/2
           "
         >
           <Image
-            src="/images/visual-portfolio.webp"
+            src="/images/visual-portfolio.svg"
             alt="Visual Portfolio"
             fill
             className="object-contain opacity-90"
