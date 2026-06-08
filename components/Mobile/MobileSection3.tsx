@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import CategoryImageModal from "../Section3/CategoryImageModal";
+import CategoryImageModalMobile from "./CategoryImageModalMobile";
 import { photographyCategories } from "../Section3/categoryData";
 import CategoryCard from "../Section3/CategoryCard";
 import CategoryFeed from "../Section3/CategoryFeed";
@@ -246,8 +246,8 @@ export default function MobileSection3() {
 
       </div>
       <AnimatePresence>
-        {activeCategory && modalPhotoIndex !== null ? (
-          <CategoryImageModal
+        {activeCategory && modalPhotoIndex !== null && (
+          <CategoryImageModalMobile
             photo={activeCategory.photos[modalPhotoIndex]}
             currentIndex={modalPhotoIndex}
             totalPhotos={activeCategory.photos.length}
@@ -255,7 +255,7 @@ export default function MobileSection3() {
             onPrevious={handlePreviousPhoto}
             onNext={handleNextPhoto}
           />
-        ) : null}
+        )}
       </AnimatePresence>
     </section>
   );
