@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-
+import CategoryImageModal from "../Section3/CategoryImageModal";
 import { photographyCategories } from "../Section3/categoryData";
 import CategoryCard from "../Section3/CategoryCard";
 import CategoryFeed from "../Section3/CategoryFeed";
@@ -14,6 +14,9 @@ export default function MobileSection3() {
   const [activeCategoryId, setActiveCategoryId] =
     useState<string | null>(null);
 
+  const [modalPhotoIndex, setModalPhotoIndex] =
+    useState<number | null>(null);
+
   const activeCategory =
     photographyCategories.find(
       (cat) => cat.id === activeCategoryId
@@ -22,6 +25,37 @@ export default function MobileSection3() {
   const toggleCategory = (id: string) => {
     setActiveCategoryId((current) =>
       current === id ? null : id
+    );
+  };
+
+  const handlePhotoOpen = (photoIndex: number) => {
+    setModalPhotoIndex(photoIndex);
+  };
+
+  const handlePhotoClose = () => {
+    setModalPhotoIndex(null);
+  };
+
+  const handlePreviousPhoto = () => {
+    if (!activeCategory || modalPhotoIndex === null) {
+      return;
+    }
+
+    setModalPhotoIndex(
+      Math.max(0, modalPhotoIndex - 1)
+    );
+  };
+
+  const handleNextPhoto = () => {
+    if (!activeCategory || modalPhotoIndex === null) {
+      return;
+    }
+
+    setModalPhotoIndex(
+      Math.min(
+        activeCategory.photos.length - 1,
+        modalPhotoIndex + 1
+      )
     );
   };
 
@@ -202,12 +236,7 @@ export default function MobileSection3() {
                   titleImage={activeCategory.galleryTitleImage}
                   titleScale={activeCategory.galleryTitleScale}
                   photos={activeCategory.photos}
-                  onPhotoClick={(index) => {
-                    console.log(
-                      activeCategory.galleryTitle,
-                      index
-                    );
-                  }}
+                  onPhotoClick={handlePhotoOpen}
                 />
 
               </div>
@@ -216,6 +245,18 @@ export default function MobileSection3() {
         </AnimatePresence>
 
       </div>
+      <AnimatePresence>
+        {activeCategory && modalPhotoIndex !== null ? (
+          <CategoryImageModal
+            photo={activeCategory.photos[modalPhotoIndex]}
+            currentIndex={modalPhotoIndex}
+            totalPhotos={activeCategory.photos.length}
+            onClose={handlePhotoClose}
+            onPrevious={handlePreviousPhoto}
+            onNext={handleNextPhoto}
+          />
+        ) : null}
+      </AnimatePresence>
     </section>
   );
 }

@@ -21,15 +21,7 @@ export default function TransparentImageLabel({
         className="absolute inset-0 transform-gpu"
         style={{ transform: `scale(${scale})`, transformOrigin: "center" }}
       >
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          unoptimized
-          priority={priority}
-          sizes={sizes}
-          className="object-contain"
-        />
+        <Image src={src} alt={alt} fill unoptimized priority={priority} sizes={sizes} className="object-contain" />
       </div>
     </div>
   );
