@@ -1,13 +1,30 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { photographyCategories } from "../Section3/categoryData";
 import CategoryCard from "../Section3/CategoryCard";
+import CategoryFeed from "../Section3/CategoryFeed";
 
 const cinematicEase = [0.22, 1, 0.36, 1] as const;
 
 export default function MobileSection3() {
+  const [activeCategoryId, setActiveCategoryId] =
+    useState<string | null>(null);
+
+  const activeCategory =
+    photographyCategories.find(
+      (cat) => cat.id === activeCategoryId
+    ) ?? null;
+
+  const toggleCategory = (id: string) => {
+    setActiveCategoryId((current) =>
+      current === id ? null : id
+    );
+  };
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#3d381b] text-white">
 
@@ -40,7 +57,6 @@ export default function MobileSection3() {
           />
         </motion.div>
 
-        {/* DARK OVERLAY */}
         <div className="absolute inset-0 bg-[#3d381b]/55" />
 
         {/* VISUAL PORTFOLIO */}
@@ -127,7 +143,7 @@ export default function MobileSection3() {
             overflow-x-auto
             overflow-y-hidden
             px-5
-            pb-12
+            pb-8
             pt-2
           "
         >
@@ -146,8 +162,8 @@ export default function MobileSection3() {
                   titleImage={cat.titleImage}
                   titleScale={cat.titleScale}
                   image={cat.image}
-                  isActive={false}
-                  onClick={() => {}}
+                  isActive={activeCategoryId === cat.id}
+                  onClick={() => toggleCategory(cat.id)}
                   zoom={cat.zoom}
                   position={cat.position}
                 />
@@ -155,6 +171,50 @@ export default function MobileSection3() {
             </div>
           ))}
         </div>
+
+        {/* EXPANDED GALLERY */}
+        <AnimatePresence mode="wait">
+          {activeCategory && (
+            <motion.div
+              key={activeCategory.id}
+              initial={{
+                opacity: 0,
+                height: 0,
+              }}
+              animate={{
+                opacity: 1,
+                height: "auto",
+              }}
+              exit={{
+                opacity: 0,
+                height: 0,
+              }}
+              transition={{
+                duration: 0.45,
+                ease: cinematicEase,
+              }}
+              className="overflow-hidden px-5 pb-10"
+            >
+              <div className="border-t border-white/10 pt-8">
+
+                <CategoryFeed
+                  title={activeCategory.galleryTitle}
+                  titleImage={activeCategory.galleryTitleImage}
+                  titleScale={activeCategory.galleryTitleScale}
+                  photos={activeCategory.photos}
+                  onPhotoClick={(index) => {
+                    console.log(
+                      activeCategory.galleryTitle,
+                      index
+                    );
+                  }}
+                />
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
     </section>
   );
