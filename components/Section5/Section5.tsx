@@ -89,7 +89,7 @@ export default function Section5({
 
               {/* TEXT */}
               <span className="absolute left-[-150px] top-[130px] tracking-[0.25em] text-lg">
-                : VISUALS_BY_GOUTHAM
+                : GOUTHAM_DANCE_PHOTOGRAPHER
               </span>
 
             </div>

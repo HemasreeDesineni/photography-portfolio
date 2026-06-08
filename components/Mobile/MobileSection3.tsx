@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import CategoryImageModalMobile from "./CategoryImageModalMobile";
-import { photographyCategories } from "../Section3/categoryData";
+import { photographyCategories, videographyCategories } from "../Section3/categoryData";
 import CategoryCard from "../Section3/CategoryCard";
 import CategoryFeed from "../Section3/CategoryFeed";
 
@@ -12,6 +12,9 @@ const cinematicEase = [0.22, 1, 0.36, 1] as const;
 
 export default function MobileSection3() {
   const [activeCategoryId, setActiveCategoryId] =
+    useState<string | null>(null);
+
+  const [activeVideoCategoryId, setActiveVideoCategoryId] =
     useState<string | null>(null);
 
   const [modalPhotoIndex, setModalPhotoIndex] =
@@ -22,8 +25,19 @@ export default function MobileSection3() {
       (cat) => cat.id === activeCategoryId
     ) ?? null;
 
+  const activeVideoCategory =
+    videographyCategories.find(
+      (cat) => cat.id === activeVideoCategoryId
+    ) ?? null;
+
   const toggleCategory = (id: string) => {
     setActiveCategoryId((current) =>
+      current === id ? null : id
+    );
+  };
+
+  const toggleVideoCategory = (id: string) => {
+    setActiveVideoCategoryId((current) =>
       current === id ? null : id
     );
   };
@@ -237,6 +251,95 @@ export default function MobileSection3() {
                   titleScale={activeCategory.galleryTitleScale}
                   photos={activeCategory.photos}
                   onPhotoClick={handlePhotoOpen}
+                />
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* VIDEOGRAPHY TITLE */}
+        <div className="relative mt-10 h-[120px] overflow-visible">
+          <div className="absolute inset-0 scale-[5.5]">
+            <Image
+              src="/images/videography.svg"
+              alt="Videography"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* VIDEOGRAPHY CARDS */}
+        <div
+          className="
+            hide-scrollbar
+            flex
+            snap-x
+            snap-mandatory
+            gap-4
+            overflow-x-auto
+            overflow-y-hidden
+            px-5
+            pb-8
+          "
+        >
+          {videographyCategories.map((cat) => (
+            <div
+              key={cat.id}
+              className="
+                w-[65vw]
+                shrink-0
+                snap-center
+              "
+            >
+              <div className="relative h-[500px] w-full overflow-hidden">
+                <CategoryCard
+                  title={cat.title}
+                  titleImage={cat.titleImage}
+                  titleScale={cat.titleScale}
+                  image={cat.image}
+                  isActive={activeVideoCategoryId === cat.id}
+                  onClick={() => toggleVideoCategory(cat.id)}
+                  zoom={cat.zoom}
+                  position={cat.position}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* VIDEOGRAPHY EXPANSION */}
+        <AnimatePresence mode="wait">
+          {activeVideoCategory && (
+            <motion.div
+              key={activeVideoCategory.id}
+              initial={{
+                opacity: 0,
+                height: 0,
+              }}
+              animate={{
+                opacity: 1,
+                height: "auto",
+              }}
+              exit={{
+                opacity: 0,
+                height: 0,
+              }}
+              transition={{
+                duration: 0.45,
+                ease: cinematicEase,
+              }}
+              className="overflow-hidden px-5 pb-10"
+            >
+              <div className="border-t border-white/10 pt-8">
+
+                <CategoryFeed
+                  title={activeVideoCategory.galleryTitle}
+                  titleImage={activeVideoCategory.galleryTitleImage}
+                  titleScale={activeVideoCategory.galleryTitleScale}
+                  photos={[]}
+                  onPhotoClick={() => {}}
                 />
 
               </div>
