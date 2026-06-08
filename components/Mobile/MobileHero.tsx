@@ -75,7 +75,7 @@ export default function MobileHero() {
             className="
               absolute
               left-[10px]
-              top-[-30px]
+              top-[-4%]
               z-50
               -translate-x-1/2
             "
@@ -137,14 +137,14 @@ export default function MobileHero() {
                 absolute
                 left-1/2
                 top-[55px]
-                h-[350px]
-                w-[500px]
+                h-[370px]
+                w-[200px]
                 -translate-x-1/2
                 z-20
               "
             >
               <Image
-                src="/images/through-my.png"
+                src="/images/through-my.svg"
                 alt="Through My"
                 fill
                 quality={100}
@@ -169,7 +169,7 @@ export default function MobileHero() {
               "
             >
               <Image
-                src="/images/hero-text.png"
+                src="/images/hero-text.svg"
                 alt="Eyes"
                 fill
                 quality={100}
