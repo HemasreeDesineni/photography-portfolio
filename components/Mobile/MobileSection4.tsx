@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function MobileSection4() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#4a2208] text-white">
+    <section className="relative min-h-screen overflow-hidden bg-[#391e0a] text-white">
 
       <div className="mx-auto flex min-h-screen max-w-[500px] flex-col items-center px-6 py-10">
 

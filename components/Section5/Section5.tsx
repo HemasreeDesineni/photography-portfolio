@@ -9,7 +9,7 @@ export default function Section5({
   setSection: (n: number) => void;
 }) {
   return (
-    <section className="relative h-screen w-full bg-[#4a2208] text-white overflow-hidden">
+    <section className="relative h-screen w-full bg-[#391e0a] text-white overflow-hidden">
 
       {/* MAIN CENTER SYSTEM */}
       <div className="absolute inset-0 flex items-center justify-center">
