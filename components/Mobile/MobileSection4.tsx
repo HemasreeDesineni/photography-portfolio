@@ -9,9 +9,10 @@ export default function MobileSection4() {
       <div className="mx-auto flex min-h-screen max-w-[500px] flex-col items-center px-6 py-10">
 
         {/* REACH ME + AT */}
-        <div className="relative h-[240px] w-full">
+        <div className="relative h-[320px] w-full overflow-visible">
 
-          <div className="absolute inset-x-0 top-0 h-[220px]">
+          {/* REACH ME */}
+          <div className="absolute left-1/2 top-[-170px] h-[600px] w-[300%] -translate-x-1/2">
             <Image
               src="/images/reach-me.webp"
               alt="Reach Me"
@@ -20,7 +21,8 @@ export default function MobileSection4() {
             />
           </div>
 
-          <div className="absolute left-1/2 top-[120px] h-[70px] w-[180px] -translate-x-1/2">
+          {/* AT */}
+          <div className="absolute left-[52%] top-[6px] h-[290px] w-[480px] -translate-x-1/2">
             <Image
               src="/images/at.png"
               alt="At"
@@ -32,7 +34,7 @@ export default function MobileSection4() {
         </div>
 
         {/* CONTACTS */}
-        <div className="mt-2 flex w-full flex-col gap-6">
+        <div className="mt-2 flex w-full flex-col gap-8">
 
           {/* INSTAGRAM */}
           <a
@@ -44,8 +46,8 @@ export default function MobileSection4() {
             <Image
               src="/images/instagram-icon.png"
               alt="Instagram"
-              width={52}
-              height={52}
+              width={60}
+              height={60}
             />
 
             <span className="text-center text-[13px] tracking-[0.08em]">
@@ -61,8 +63,8 @@ export default function MobileSection4() {
             <Image
               src="/images/whatsapp-icon.png"
               alt="WhatsApp"
-              width={52}
-              height={52}
+              width={60}
+              height={60}
             />
 
             <span className="text-[15px] tracking-[0.12em]">
