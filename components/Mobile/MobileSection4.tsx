@@ -44,10 +44,10 @@ export default function MobileSection4() {
             className="flex items-center justify-center gap-3"
           >
             <Image
-              src="/images/instagram-icon.png"
+              src="/images/instagram-icon.svg"
               alt="Instagram"
-              width={60}
-              height={60}
+              width={160}
+              height={160}
             />
 
             <span className="text-center text-[13px] tracking-[0.08em]">
@@ -61,10 +61,10 @@ export default function MobileSection4() {
             className="flex items-center justify-center gap-3"
           >
             <Image
-              src="/images/whatsapp-icon.png"
+              src="/images/whatsapp-icon.svg"
               alt="WhatsApp"
-              width={60}
-              height={60}
+              width={160}
+              height={160}
             />
 
             <span className="text-[15px] tracking-[0.12em]">
