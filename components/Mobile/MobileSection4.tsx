@@ -9,10 +9,10 @@ export default function MobileSection4() {
       <div className="mx-auto flex min-h-screen max-w-[500px] flex-col items-center px-6 py-10">
 
         {/* REACH ME + AT */}
-        <div className="relative h-[320px] w-full overflow-visible">
+        <div className="relative h-[120px] w-full overflow-visible">
 
           {/* REACH ME */}
-          <div className="absolute left-1/2 top-[-170px] h-[600px] w-[300%] -translate-x-1/2">
+          <div className="absolute left-1/2 top-[-200px] h-[600px] w-[300%] -translate-x-1/2">
             <Image
               src="/images/reach-me.svg"
               alt="Reach Me"
@@ -22,7 +22,7 @@ export default function MobileSection4() {
           </div>
 
           {/* AT */}
-          <div className="absolute left-[52%] top-[6px] h-[290px] w-[480px] -translate-x-1/2">
+          <div className="absolute left-[52%] top-[-20px] h-[290px] w-[480px] -translate-x-1/2">
             <Image
               src="/images/at.png"
               alt="At"
@@ -34,23 +34,24 @@ export default function MobileSection4() {
         </div>
 
         {/* CONTACTS */}
-        <div className="mt-2 flex w-full flex-col gap-8">
+        <div className="-mt-8 flex w-full flex-col gap-0">
 
           {/* INSTAGRAM */}
           <a
             href="https://instagram.com/goutham_dance_photographer"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3"
+            className="flex items-center justify-center"
           >
             <Image
               src="/images/instagram-icon.svg"
               alt="Instagram"
               width={160}
               height={160}
+              className="h-[160px] w-[160px] shrink-0"
             />
 
-            <span className="text-center text-[13px] tracking-[0.08em]">
+            <span className="-ml-16 text-[13px] tracking-[0.08em] whitespace-nowrap">
               : GOUTHAM_DANCE_PHOTOGRAPHER
             </span>
           </a>
@@ -58,16 +59,17 @@ export default function MobileSection4() {
           {/* WHATSAPP */}
           <a
             href="https://wa.me/919154899991"
-            className="flex items-center justify-center gap-3"
+            className="flex items-center justify-center"
           >
             <Image
               src="/images/whatsapp-icon.svg"
               alt="WhatsApp"
               width={160}
               height={160}
+              className="h-[160px] w-[160px] shrink-0"
             />
 
-            <span className="text-[15px] tracking-[0.12em]">
+            <span className="-ml-16 text-[15px] tracking-[0.08em] whitespace-nowrap">
               : 9154899991
             </span>
           </a>
@@ -80,7 +82,7 @@ export default function MobileSection4() {
         </div>
 
         {/* SOMETHING AMAZING */}
-        <div className="relative mt-2 h-[300px] w-full">
+        <div className="relative mt-2 h-[300px] w-[150%]">
           <Image
             src="/images/something-amazing.webp"
             alt="Something Amazing"
