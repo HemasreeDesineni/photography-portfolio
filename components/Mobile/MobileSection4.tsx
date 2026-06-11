@@ -34,7 +34,7 @@ export default function MobileSection4() {
         </div>
 
         {/* CONTACTS */}
-        <div className="mt-2 flex w-full flex-col gap-0">
+        <div className="mt-10 flex w-full flex-col gap-0">
 
           {/* INSTAGRAM */}
           <a
@@ -59,7 +59,7 @@ export default function MobileSection4() {
           {/* WHATSAPP */}
           <a
             href="https://wa.me/919154899991"
-            className="-mt-10 flex items-center justify-center"
+            className="-mt-16 flex items-center justify-center"
           >
             <Image
               src="/images/whatsapp-icon.svg"
@@ -77,12 +77,12 @@ export default function MobileSection4() {
         </div>
 
         {/* LET'S CREATE */}
-        <div className="mt-4 text-center tracking-[0.35em] text-lg">
+        <div className="-mt-4 text-center tracking-[0.35em] text-lg">
           LET&apos;S CREATE
         </div>
 
         {/* SOMETHING AMAZING */}
-        <div className="relative mt-0 h-[300px] w-[150%]">
+        <div className="relative -mt-8 h-[300px] w-[150%]">
           <Image
             src="/images/something-amazing.webp"
             alt="Something Amazing"
