@@ -59,7 +59,7 @@ export default function MobileSection4() {
           {/* WHATSAPP */}
           <a
             href="https://wa.me/919154899991"
-            className="-mt-16 flex items-center justify-center"
+            className="-mt-28 flex items-center justify-center"
           >
             <Image
               src="/images/whatsapp-icon.svg"
@@ -77,12 +77,12 @@ export default function MobileSection4() {
         </div>
 
         {/* LET'S CREATE */}
-        <div className="-mt-4 text-center tracking-[0.35em] text-lg">
+        <div className="mt-10 text-center tracking-[0.35em] text-xl">
           LET&apos;S CREATE
         </div>
 
         {/* SOMETHING AMAZING */}
-        <div className="relative -mt-8 h-[300px] w-[150%]">
+        <div className="relative -mt-16 h-[300px] w-[150%]">
           <Image
             src="/images/something-amazing.webp"
             alt="Something Amazing"
@@ -92,7 +92,7 @@ export default function MobileSection4() {
         </div>
 
         {/* TOGETHER */}
-        <div className="-mt-8 text-center tracking-[0.35em] text-lg">
+        <div className="-mt-12 text-center tracking-[0.35em] text-xl">
           TOGETHER
         </div>
 
