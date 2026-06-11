@@ -91,6 +91,17 @@ export default function MobileHero() {
           </motion.div>
 
           <button
+            onClick={() => {
+              console.log(
+                document.getElementById("contact-section")
+              );
+              document
+                .getElementById("contact-section")
+                ?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+            }}
             className="
                 absolute
                 right-4
