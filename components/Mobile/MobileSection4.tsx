@@ -14,7 +14,7 @@ export default function MobileSection4() {
           {/* REACH ME */}
           <div className="absolute left-1/2 top-[-170px] h-[600px] w-[300%] -translate-x-1/2">
             <Image
-              src="/images/reach-me.webp"
+              src="/images/reach-me.svg"
               alt="Reach Me"
               fill
               className="object-contain"
