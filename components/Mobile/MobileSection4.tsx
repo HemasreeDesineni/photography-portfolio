@@ -34,7 +34,7 @@ export default function MobileSection4() {
         </div>
 
         {/* CONTACTS */}
-        <div className="mt-10 flex w-full flex-col gap-0">
+        <div className="mt-10 -ml-12 flex w-full flex-col gap-0">
 
           {/* INSTAGRAM */}
           <a
