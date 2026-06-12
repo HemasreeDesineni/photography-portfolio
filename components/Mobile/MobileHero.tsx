@@ -92,9 +92,6 @@ export default function MobileHero() {
 
           <button
             onClick={() => {
-              console.log(
-                document.getElementById("contact-section")
-              );
               document
                 .getElementById("contact-section")
                 ?.scrollIntoView({

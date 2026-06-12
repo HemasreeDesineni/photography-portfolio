@@ -241,7 +241,7 @@ export default function MobileSection3() {
                 duration: 0.45,
                 ease: cinematicEase,
               }}
-              className="overflow-hidden px-5 pb-10"
+              className="relative z-50 overflow-hidden px-5 pb-10"
             >
               <div className="border-t border-white/10 pt-8">
 
@@ -259,13 +259,13 @@ export default function MobileSection3() {
         </AnimatePresence>
 
         {/* VIDEOGRAPHY TITLE */}
-        <div className="relative mt-10 h-[120px] overflow-visible">
-          <div className="absolute inset-0 scale-[5.5]">
+        <div className="relative mt-10 h-[120px] overflow-visible pointer-events-none">
+          <div className="absolute inset-0 scale-[5.5] pointer-events-none">
             <Image
               src="/images/videography.svg"
               alt="Videography"
               fill
-              className="object-contain"
+              className="pointer-events-none object-contain"
             />
           </div>
         </div>
