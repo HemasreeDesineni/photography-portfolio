@@ -27,6 +27,24 @@ export type CategoryDefinition = {
   photos: CategoryPhoto[];
 };
 
+const createCategoryPhotos = (
+  category: string,
+  files: string[],
+): CategoryPhoto[] =>
+  files.map((file, index) => ({
+    src: `/images/photography/${category}/${file}`,
+    alt: `${category} photography image ${index + 1}`,
+  }));
+
+const createNumberedPhotos = (
+  category: string,
+  total: number,
+): CategoryPhoto[] =>
+  createCategoryPhotos(
+    category,
+    Array.from({ length: total }, (_, index) => `${index + 1}.jpg`),
+  );
+
 export const photographyCategories: CategoryDefinition[] = [
   {
     id: "conceptual",
@@ -39,16 +57,7 @@ export const photographyCategories: CategoryDefinition[] = [
     image: "/images/conceptual.jpg",
     zoom: 1,
     position: "center",
-    photos: [
-      {
-        src: "/images/photography/conceptual/img1.jpg",
-        alt: "Conceptual photography image 1",
-      },
-      {
-        src: "/images/photography/conceptual/img2.jpg",
-        alt: "Conceptual photography image 2",
-      },
-    ],
+    photos: createNumberedPhotos("conceptual", 30),
   },
   {
     id: "arangetram",
@@ -72,7 +81,12 @@ export const photographyCategories: CategoryDefinition[] = [
     image: "/images/indoor.jpg",
     zoom: 1,
     position: "center",
-    photos: [],
+    photos: createCategoryPhotos("indoor", [
+      "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.png",
+    ]),
   },
   {
     id: "performances",
@@ -84,7 +98,7 @@ export const photographyCategories: CategoryDefinition[] = [
     image: "/images/performances.jpg",
     zoom: 1.2,
     position: "center top",
-    photos: [],
+    photos: createNumberedPhotos("performances", 25),
   },
 ];
 
