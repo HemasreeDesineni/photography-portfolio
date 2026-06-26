@@ -234,6 +234,7 @@ export default function Section3({
       <AnimatePresence>
         {activeCategory && modalPhotoIndex !== null ? (
           <CategoryImageModal
+            key={activeCategory.photos[modalPhotoIndex].src}
             photo={activeCategory.photos[modalPhotoIndex]}
             currentIndex={modalPhotoIndex}
             totalPhotos={activeCategory.photos.length}
