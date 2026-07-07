@@ -83,14 +83,12 @@ export default function MobileSection3() {
         <motion.div
           initial={{
             opacity: 0,
-            scale: 1.08,
           }}
           animate={{
             opacity: 1,
-            scale: 1,
           }}
           transition={{
-            duration: 2,
+            duration: 1.2,
             ease: cinematicEase,
           }}
           className="absolute inset-0"
@@ -99,7 +97,7 @@ export default function MobileSection3() {
             src="/images/page3banner.jpg"
             alt="Visual Portfolio"
             fill
-            priority
+            quality={95}
             sizes="100vw"
             className="object-cover object-center opacity-55"
           />
@@ -173,6 +171,7 @@ export default function MobileSection3() {
             src="/images/photography.png"
             alt="Photography"
             fill
+            sizes="260vw"
             className="object-contain"
           />
         </motion.div>

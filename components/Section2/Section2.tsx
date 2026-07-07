@@ -16,8 +16,10 @@ export default function Section2({
           src="/images/page2-bg.jpg"
           alt="bg"
           fill
-          className="object-cover"
+          quality={100}
           priority
+          sizes="100vw"
+          className="object-cover"
         />
       </div>
 

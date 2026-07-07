@@ -42,8 +42,12 @@ export default function Hero({
           src="/images/hero-bg.jpg"
           alt="hero-bg"
           fill
-          className="object-cover"
+          quality={100}
           priority
+          sizes="100vw"
+          className="object-cover"
+          fetchPriority="high"
+          loading="eager"
         />
       </motion.div>
 
@@ -77,7 +81,9 @@ function AnimatedTitle({
 }) {
   const text = "Goutham Photography";
 
-  const delays = text.split("").map(() => 1.2 + Math.random() * 0.8);
+  const delays = text
+    .split("")
+    .map((_, index) => 1.2 + (index % 6) * 0.1);
 
   return (
     <div className="absolute top-[45px] w-full text-center text-white font-serif text-4xl z-30 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">

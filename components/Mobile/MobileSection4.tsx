@@ -27,6 +27,7 @@ export default function MobileSection4() {
               src="/images/at.png"
               alt="At"
               fill
+              sizes="480px"
               className="object-contain"
             />
           </div>
@@ -87,6 +88,8 @@ export default function MobileSection4() {
             src="/images/something-amazing.webp"
             alt="Something Amazing"
             fill
+            quality={90}
+            sizes="(max-width: 500px) 150vw, 750px"
             className="object-contain"
           />
         </div>

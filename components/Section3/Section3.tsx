@@ -128,6 +128,7 @@ export default function Section3({
                   alt="Page 3 banner"
                   fill
                   priority
+                  quality={95}
                   sizes="100vw"
                   className="object-cover object-center opacity-60"
                 />

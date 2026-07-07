@@ -40,7 +40,7 @@ export default function Section4({
             src="/images/videography.png"
             alt="videography"
             fill
-            priority
+            sizes="(max-width: 1536px) calc(100vw - 48px), 1380px"
             className="object-cover opacity-90"
           />
         </motion.div>

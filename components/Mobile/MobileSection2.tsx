@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const cinematicEase = [0.22, 1, 0.36, 1] as const;
+const mobileFullscreenCoverSizes = "(max-width: 1024px) 150vh, 100vw";
 
 export default function MobileSection2() {
   return (
@@ -12,15 +13,13 @@ export default function MobileSection2() {
       {/* BACKGROUND IMAGE */}
       <motion.div
         initial={{
-          scale: 1.08,
           opacity: 0,
         }}
         animate={{
-          scale: 1,
           opacity: 1,
         }}
         transition={{
-          duration: 2.2,
+          duration: 1.2,
           ease: cinematicEase,
         }}
         className="absolute inset-0"
@@ -28,17 +27,13 @@ export default function MobileSection2() {
         <Image
           src="/images/page2-bg.jpg"
           alt="Section 2 Background"
-          width={1179}
-          height={2556}
+          fill
+          quality={100}
           priority
-          quality={95}
           sizes="100vw"
-          className="
-            h-full
-            w-full
-            object-cover
-          "
+          className="object-cover"
           style={{
+            objectFit: "cover",
             objectPosition: "50% 42%",
           }}
         />
@@ -153,7 +148,6 @@ export default function MobileSection2() {
             alt="I don't just Capture"
             width={1000}
             height={300}
-            priority
             quality={100}
             className="h-auto w-full object-contain"
           />
@@ -190,7 +184,6 @@ export default function MobileSection2() {
             alt="I Compose"
             width={1200}
             height={350}
-            priority
             quality={100}
             className="h-auto w-full object-contain"
           />
@@ -229,7 +222,6 @@ export default function MobileSection2() {
           alt="Section 2 Text"
           width={1300}
           height={600}
-          priority
           quality={100}
           className="h-auto w-full object-contain"
           style={{

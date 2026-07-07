@@ -273,7 +273,6 @@ export default function DesktopExperience() {
     };
   }, [
     isSection3ModalOpen,
-    navigateBetweenSections,
     section,
     section3ActiveCategoryId,
   ]);
@@ -328,14 +327,12 @@ export default function DesktopExperience() {
     };
     }, [
     isSection3ModalOpen,
-    navigateBetweenSections,
     section,
     section3ActiveCategoryId,
     ]);
 
   useEffect(() => {
     if (!section3ActiveCategoryId) {
-      setSection3GalleryProgress(0);
       return;
     }
 
@@ -343,8 +340,6 @@ export default function DesktopExperience() {
       top: 0,
       behavior: "auto",
     });
-
-    setSection3GalleryProgress(0);
   }, [section3ActiveCategoryId]);
 
   return (

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const cinematicEase = [0.22, 1, 0.36, 1] as const;
+const mobileFullscreenCoverSizes = "(max-width: 1024px) 100vw, 100vw";
 
 export default function MobileHero() {
   return (
@@ -19,34 +20,30 @@ export default function MobileHero() {
       <motion.div
         initial={{
           opacity: 0,
-          scale: 1.08,
         }}
         animate={{
           opacity: 1,
-          scale: 1,
         }}
         transition={{
-          duration: 2,
+          duration: 1.2,
           ease: cinematicEase,
         }}
         className="absolute inset-0"
       >
         <Image
-            src="/images/hero-bg-mobile.jpg"
-            alt="Hero"
-            width={1179}
-            height={2556}
-            priority
-            quality={95}
-            sizes="100vw"
-            className="
-              h-full
-              w-full
-              object-cover
-            "
-            style={{
-              objectPosition: "58% center",
-            }}
+          src="/images/hero-bg-mobile.jpg"
+          alt="Hero"
+          fill
+          quality={100}
+          sizes={mobileFullscreenCoverSizes}
+          className="object-cover"
+          priority
+          fetchPriority="high"
+          loading="eager"
+          style={{
+            objectFit: "cover",
+            objectPosition: "58% center",
+          }}
         />
       </motion.div>
 

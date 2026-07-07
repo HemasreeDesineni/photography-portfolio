@@ -50,7 +50,7 @@ export default function CategoryCard({
           src={image}
           alt=""
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+          sizes="(max-width: 768px) 65vw, (max-width: 1280px) 50vw, 25vw"
           className="object-cover"
           style={{
             transform: `scale(${zoom})`,
@@ -132,6 +132,7 @@ export default function CategoryCard({
             src="/images/category-arrow.webp"
             alt=""
             fill
+            sizes="90px"
             className="
               object-contain
               brightness-110 contrast-110
