@@ -82,10 +82,10 @@ export const photographyCategories: CategoryDefinition[] = [
     zoom: 1,
     position: "center",
     photos: createCategoryPhotos("indoor", [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.png",
+      "https://ik.imagekit.io/n5jyosnt1/portfolio/photography/indoor/indoor-1.jpg",
+      "https://ik.imagekit.io/n5jyosnt1/portfolio/photography/indoor/indoor-2.jpg",
+      "https://ik.imagekit.io/n5jyosnt1/portfolio/photography/indoor/indoor-3.jpg",
+      "https://ik.imagekit.io/n5jyosnt1/portfolio/photography/indoor/indoor-4.png",
     ]),
   },
   {
