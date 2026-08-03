@@ -32,7 +32,9 @@ const createCategoryPhotos = (
   files: string[],
 ): CategoryPhoto[] =>
   files.map((file, index) => ({
-    src: `/images/photography/${category}/${file}`,
+    src: file.startsWith("http")
+      ? file
+      : `/images/photography/${category}/${file}`,
     alt: `${category} photography image ${index + 1}`,
   }));
 
