@@ -1,5 +1,3 @@
-import TransparentImageLabel from "./TransparentImageLabel";
-
 export default function SectionContactButton({
   onClick,
 }: {
@@ -10,15 +8,9 @@ export default function SectionContactButton({
       type="button"
       onClick={onClick}
       aria-label="Contact"
-      className="absolute right-6 top-5 z-[100] cursor-pointer bg-transparent p-0"
+      className="absolute right-10 top-[25px] z-[100] cursor-pointer bg-transparent p-0 font-[var(--font-playfair)] text-lg text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] hover:opacity-80"
     >
-      <TransparentImageLabel
-        src="/images/contact-page3.png"
-        alt="Contact"
-        scale={60}
-        sizes="140px"
-        className="h-[16px] w-[120px] md:h-[17px] md:w-[130px] xl:h-[18px] xl:w-[140px]"
-      />
+      Contact
     </button>
   );
 }

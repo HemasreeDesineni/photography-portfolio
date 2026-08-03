@@ -41,7 +41,7 @@ export default function Section2({
       {/* CONTACT */}
       <div
         onClick={() => setSection(4)}
-        className="absolute top-[25px] right-10 z-[100] text-white text-lg font-[var(--font-playfair)] cursor-pointer hover:opacity-80"
+        className="absolute top-[25px] right-10 z-[100] cursor-pointer font-[var(--font-playfair)] text-lg text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] hover:opacity-80"
       >
         Contact
       </div>
