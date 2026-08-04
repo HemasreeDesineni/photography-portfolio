@@ -55,8 +55,8 @@ export default function CategoryGrid({
           <CategoryCard
             key={cat.id}
             title={cat.title}
-            titleImage={cat.titleImage}
-            titleScale={cat.titleScale}
+            titleClassName={cat.titleClassName}
+            titleStyle={cat.titleStyle}
             image={cat.image}
             isActive={resolvedActive === cat.id}
             onClick={() => handleToggle(cat.id)}

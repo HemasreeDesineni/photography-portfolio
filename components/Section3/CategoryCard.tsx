@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import TransparentImageLabel from "./TransparentImageLabel";
+import type { CSSProperties } from "react";
 
 const cinematicEase = [0.22, 1, 0.36, 1] as const;
 
 export default function CategoryCard({
   title,
-  titleImage,
-  titleScale = 39,
+  titleClassName = "text-white",
+  titleStyle,
   image,
   isActive,
   onClick,
@@ -17,8 +17,8 @@ export default function CategoryCard({
   position = "center",
 }: {
   title: string;
-  titleImage: string;
-  titleScale?: number;
+  titleClassName?: string;
+  titleStyle?: CSSProperties;
   image: string;
   isActive: boolean;
   onClick: () => void;
@@ -107,13 +107,20 @@ export default function CategoryCard({
         }}
         className="absolute inset-x-0 top-5 z-10 flex justify-center px-4"
       >
-        <TransparentImageLabel
-          src={titleImage}
-          alt={title}
-          scale={titleScale}
-          sizes="240px"
-          className="h-[20px] w-full max-w-[220px] md:h-[22px] md:max-w-[230px] xl:h-[24px] xl:max-w-[240px]"
-        />
+        <span
+          style={{
+            fontFamily: "var(--font-inter), Arial, sans-serif",
+            transform: "scaleX(1.06) scaleY(0.96)",
+            transformOrigin: "center",
+            ...titleStyle,
+          }}
+          className={[
+            "pointer-events-none block text-[0.97rem] font-extrabold uppercase leading-none tracking-[0.18em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.22)] md:text-[1.02rem] xl:text-[1.07rem]",
+            titleClassName,
+          ].join(" ")}
+        >
+          {title}
+        </span>
       </motion.div>
 
       {/* ARROW */}

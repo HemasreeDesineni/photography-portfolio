@@ -1,5 +1,7 @@
 "use client";
 
+import type { CSSProperties } from "react";
+
 export const PHOTOS_PER_PAGE = 6;
 
 export type CategoryPhoto = {
@@ -17,6 +19,8 @@ export type CategoryDefinition = {
   id: string;
   title: string;
   titleImage: string;
+  titleClassName?: string;
+  titleStyle?: CSSProperties;
   titleScale?: number;
   galleryTitle: string;
   galleryTitleImage?: string;
@@ -52,6 +56,8 @@ export const photographyCategories: CategoryDefinition[] = [
     id: "conceptual",
     title: "CONCEPTUAL",
     titleImage: "/images/conceptual-title1.png",
+    titleClassName: "text-[#3f3812] font-black",
+    titleStyle: { transform: "scaleX(1.08) scaleY(0.98)" },
     titleScale: 41,
     galleryTitle: "Conceptual",
     galleryTitleImage: "/images/conceptual-title2.png",
@@ -65,6 +71,7 @@ export const photographyCategories: CategoryDefinition[] = [
     id: "arangetram",
     title: "ARANGETRAM",
     titleImage: "/images/arangetram-title1.png",
+    titleClassName: "text-white",
     galleryTitle: "Arangetram",
     galleryTitleImage: "/images/arangetram-title2.png",
     galleryTitleScale: 5.5,
@@ -77,6 +84,7 @@ export const photographyCategories: CategoryDefinition[] = [
     id: "indoor",
     title: "INDOOR",
     titleImage: "/images/indoor-title1.png",
+    titleClassName: "text-white",
     galleryTitle: "Indoor",
     galleryTitleImage: "/images/indoor-title2.png",
     galleryTitleScale: 7.5,
@@ -94,6 +102,7 @@ export const photographyCategories: CategoryDefinition[] = [
     id: "performances",
     title: "PERFORMANCES",
     titleImage: "/images/performances-title1.png",
+    titleClassName: "text-white",
     galleryTitle: "Performances",
     galleryTitleImage: "/images/performances-title2.png",
     galleryTitleScale: 5.3,
@@ -109,6 +118,8 @@ export const videographyCategories: CategoryDefinition[] = [
     id: "conceptual-video",
     title: "CONCEPTUAL",
     titleImage: "/images/conceptual-title1.png",
+    titleClassName: "text-[#3f3812] font-black",
+    titleStyle: { transform: "scaleX(1.08) scaleY(0.98)" },
     titleScale: 41,
     galleryTitle: "Conceptual",
     galleryTitleImage: "/images/conceptual-title2.png",
@@ -123,6 +134,7 @@ export const videographyCategories: CategoryDefinition[] = [
     id: "arangetram-video",
     title: "ARANGETRAM",
     titleImage: "/images/arangetram-title1.png",
+    titleClassName: "text-white",
     galleryTitle: "Arangetram",
     galleryTitleImage: "/images/arangetram-title2.png",
     galleryTitleScale: 5.5,
@@ -136,6 +148,7 @@ export const videographyCategories: CategoryDefinition[] = [
     id: "indoor-video",
     title: "INDOOR",
     titleImage: "/images/indoor-title1.png",
+    titleClassName: "text-white",
     galleryTitle: "Indoor",
     galleryTitleImage: "/images/indoor-title2.png",
     galleryTitleScale: 7.5,
@@ -149,6 +162,7 @@ export const videographyCategories: CategoryDefinition[] = [
     id: "performances-video",
     title: "PERFORMANCES",
     titleImage: "/images/performances-title1.png",
+    titleClassName: "text-white",
     galleryTitle: "Performances",
     galleryTitleImage: "/images/performances-title2.png",
     galleryTitleScale: 5.3,

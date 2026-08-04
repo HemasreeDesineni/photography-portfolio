@@ -206,8 +206,8 @@ export default function MobileSection3() {
               <div className="relative h-[500px] w-full overflow-hidden">
                 <CategoryCard
                   title={cat.title}
-                  titleImage={cat.titleImage}
-                  titleScale={cat.titleScale}
+                  titleClassName={cat.titleClassName}
+                  titleStyle={cat.titleStyle}
                   image={cat.image}
                   isActive={activeCategoryId === cat.id}
                   onClick={() => toggleCategory(cat.id)}
@@ -295,8 +295,8 @@ export default function MobileSection3() {
               <div className="relative h-[500px] w-full overflow-hidden">
                 <CategoryCard
                   title={cat.title}
-                  titleImage={cat.titleImage}
-                  titleScale={cat.titleScale}
+                  titleClassName={cat.titleClassName}
+                  titleStyle={cat.titleStyle}
                   image={cat.image}
                   isActive={activeVideoCategoryId === cat.id}
                   onClick={() => toggleVideoCategory(cat.id)}
