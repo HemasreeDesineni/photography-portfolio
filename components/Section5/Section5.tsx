@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const INSTAGRAM_URL = "https://instagram.com/goutham_dance_photographer";
+const WHATSAPP_URL = "https://wa.me/919154899991";
+
 export default function Section5({
   setSection,
 }: {
@@ -20,7 +23,7 @@ export default function Section5({
 
           {/* REACH ME */}
           <motion.div
-            className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1400px] h-[700px]"
+            className="pointer-events-none absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1400px] h-[700px]"
           >
             <Image
               src="/images/reach-me.svg"
@@ -32,7 +35,7 @@ export default function Section5({
 
           {/* AT */}
           <motion.div
-            className="absolute top-[35px] left-[620px] -translate-x-1/2"
+            className="pointer-events-none absolute top-[35px] left-[620px] -translate-x-1/2"
           >
             <Image
               src="/images/at.png"
@@ -45,14 +48,14 @@ export default function Section5({
 
           {/* LET'S CREATE */}
           <motion.div
-            className="absolute top-[360px] left-1/2 -translate-x-1/2 tracking-[0.4em] text-xl"
+            className="pointer-events-none absolute top-[360px] left-1/2 -translate-x-1/2 tracking-[0.4em] text-xl"
           >
             LET&apos;S CREATE
           </motion.div>
 
           {/* SOMETHING AMAZING */}
           <motion.div
-            className="absolute top-[300px] left-[580px] -translate-x-1/2 w-[1100px] h-[400px]"
+            className="pointer-events-none absolute top-[300px] left-[580px] -translate-x-1/2 w-[1100px] h-[400px]"
           >
             <Image
               src="/images/something-amazing.webp"
@@ -64,7 +67,7 @@ export default function Section5({
 
           {/* TOGETHER */}
           <motion.div
-            className="absolute bottom-[70px] left-1/2 -translate-x-1/2 tracking-[0.4em] text-xl"
+            className="pointer-events-none absolute bottom-[70px] left-1/2 -translate-x-1/2 tracking-[0.4em] text-xl"
           >
             TOGETHER
           </motion.div>
@@ -72,44 +75,62 @@ export default function Section5({
           {/* ================= RIGHT COLUMN (FIXED) ================= */}
 
           <motion.div
-            className="absolute top-[100px] right-[150px] w-[420px]"
+            className="absolute top-[100px] right-[150px] z-20 w-[420px]"
           >
 
             {/* INSTAGRAM */}
             <div className="relative h-[120px]">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute left-[-188px] top-[134px] z-20 block h-[1.5rem] w-[1.5rem]"
+              >
+                <Image
+                  src="/images/instagram-icon.svg"
+                  alt="Instagram"
+                  width={24}
+                  height={24}
+                  className="h-[1.5rem] w-[1.5rem]"
+                />
+              </a>
 
-              {/* ICON */}
-              <Image
-                src="/images/instagram-icon.png"
-                alt="insta"
-                width={200}
-                height={200}
-                className="absolute left-[-380px] top-[35px] w-[400px] z-10"
-              />
-
-              {/* TEXT */}
-              <span className="absolute left-[-150px] top-[130px] tracking-[0.25em] text-lg">
-                : GOUTHAM_DANCE_PHOTOGRAPHER
-              </span>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute left-[-150px] top-[130px] whitespace-nowrap tracking-[0.25em] text-lg"
+              >
+                GOUTHAM_DANCE_PHOTOGRAPHER
+              </a>
 
             </div>
 
             {/* WHATSAPP */}
             <div className="relative h-[120px] mt-6">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute left-[-188px] top-[32px] z-20 block h-[1.55rem] w-[1.55rem]"
+              >
+                <Image
+                  src="/images/whatsapp-icon.svg"
+                  alt="WhatsApp"
+                  width={25}
+                  height={25}
+                  className="h-[1.55rem] w-[1.55rem]"
+                />
+              </a>
 
-              {/* ICON */}
-              <Image
-                src="/images/whatsapp-icon.png"
-                alt="whatsapp"
-                width={200}
-                height={200}
-                className="absolute left-[-323px] top-[-35px] w-[290px] z-10"
-              />
-
-              {/* TEXT */}
-              <span className="absolute left-[-150px] top-[30px] tracking-[0.25em] text-lg">
-                : 9154899991
-              </span>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute left-[-150px] top-[30px] whitespace-nowrap tracking-[0.25em] text-lg"
+              >
+                9154899991
+              </a>
 
             </div>
 

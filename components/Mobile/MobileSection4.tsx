@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 
+const INSTAGRAM_URL = "https://instagram.com/goutham_dance_photographer";
+const WHATSAPP_URL = "https://wa.me/919154899991";
+
 export default function MobileSection4() {
   return (
     <section id="contact-section" className="relative min-h-screen overflow-hidden bg-[#391e0a] text-white">
@@ -12,7 +15,7 @@ export default function MobileSection4() {
         <div className="relative h-[120px] w-full overflow-visible">
 
           {/* REACH ME */}
-          <div className="absolute left-1/2 top-[-200px] h-[600px] w-[300%] -translate-x-1/2">
+          <div className="pointer-events-none absolute left-1/2 top-[-200px] h-[600px] w-[300%] -translate-x-1/2">
             <Image
               src="/images/reach-me.svg"
               alt="Reach Me"
@@ -22,7 +25,7 @@ export default function MobileSection4() {
           </div>
 
           {/* AT */}
-          <div className="absolute left-[52%] top-[-20px] h-[290px] w-[480px] -translate-x-1/2">
+          <div className="pointer-events-none absolute left-[52%] top-[-20px] h-[290px] w-[480px] -translate-x-1/2">
             <Image
               src="/images/at.png"
               alt="At"
@@ -35,45 +38,61 @@ export default function MobileSection4() {
         </div>
 
         {/* CONTACTS */}
-        <div className="mt-10 -ml-12 flex w-full flex-col gap-0">
+        <div className="relative z-10 mt-10 flex w-full flex-col gap-3">
 
           {/* INSTAGRAM */}
-          <a
-            href="https://instagram.com/goutham_dance_photographer"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center"
-          >
-            <Image
-              src="/images/instagram-icon.svg"
-              alt="Instagram"
-              width={160}
-              height={160}
-              className="h-[160px] w-[160px] shrink-0"
-            />
+          <div className="flex items-center justify-center gap-3">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block h-9 w-9 shrink-0"
+            >
+              <Image
+                src="/images/instagram-icon.svg"
+                alt="Instagram"
+                width={36}
+                height={36}
+                className="h-9 w-9"
+              />
+            </a>
 
-            <span className="-ml-16 text-[13px] tracking-[0.08em] whitespace-nowrap">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[13px] tracking-[0.08em] whitespace-nowrap"
+            >
               : GOUTHAM_DANCE_PHOTOGRAPHER
-            </span>
-          </a>
+            </a>
+          </div>
 
           {/* WHATSAPP */}
-          <a
-            href="https://wa.me/919154899991"
-            className="-mt-28 flex items-center justify-center"
-          >
-            <Image
-              src="/images/whatsapp-icon.svg"
-              alt="WhatsApp"
-              width={160}
-              height={160}
-              className="h-[160px] w-[160px] shrink-0"
-            />
+          <div className="-mt-1 flex items-center justify-center gap-3">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block h-9 w-9 shrink-0"
+            >
+              <Image
+                src="/images/whatsapp-icon.svg"
+                alt="WhatsApp"
+                width={36}
+                height={36}
+                className="h-9 w-9"
+              />
+            </a>
 
-            <span className="-ml-16 text-[15px] tracking-[0.08em] whitespace-nowrap">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[15px] tracking-[0.08em] whitespace-nowrap"
+            >
               : 9154899991
-            </span>
-          </a>
+            </a>
+          </div>
 
         </div>
 
