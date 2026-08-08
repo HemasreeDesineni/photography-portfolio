@@ -100,7 +100,7 @@ export default function Section2({
       {/* BACK BUTTON */}
       <button
         onClick={() => setSection(0)}
-        className="absolute bottom-[40px] left-6 z-[100] p-3 text-white text-5xl hover:scale-110 transition"
+        className="absolute bottom-[40px] left-6 z-[100] text-5xl text-white transition hover:scale-110"
       >
         ↑
       </button>
