@@ -71,7 +71,11 @@ export default function Section3({
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
-      <SectionContactButton onClick={() => setSection(4)} />
+      <SectionContactButton
+        onClick={() => setSection(4)}
+        delay={0.55}
+        duration={1.5}
+      />
 
       <AnimatePresence mode="wait">
         {isExpanded ? (

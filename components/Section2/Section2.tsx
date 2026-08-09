@@ -39,12 +39,22 @@ export default function Section2({
       <div className="absolute bottom-0 w-full h-[10px] bg-[#b88a52] z-20" />
 
       {/* CONTACT */}
-      <div
+      <motion.button
+        type="button"
         onClick={() => setSection(4)}
-        className="absolute top-[25px] right-10 z-[100] cursor-pointer font-[var(--font-playfair)] text-lg text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] hover:opacity-80"
+        initial={{ opacity: 0, filter: "blur(10px)", y: 18 }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        whileHover={{ y: -2, scale: 1.03 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{
+          duration: 1.6,
+          ease: [0.22, 1, 0.36, 1],
+          delay: 0.45,
+        }}
+        className="absolute right-10 top-[25px] z-[100] cursor-pointer bg-transparent p-0 font-[var(--font-playfair)] text-lg text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
       >
         Contact
-      </div>
+      </motion.button>
 
       {/* TITLE */}
       <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 z-[60]">

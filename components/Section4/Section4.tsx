@@ -21,13 +21,11 @@ export default function Section4({
         className="pointer-events-none absolute inset-0 z-[5] bg-[#6a6130]/35"
       />
 
-      <motion.div
-        initial={{ opacity: 0, y: -12, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.65, delay: 0.08, ease: section4Ease }}
-      >
-        <SectionContactButton onClick={() => setSection(4)} />
-      </motion.div>
+      <SectionContactButton
+        onClick={() => setSection(4)}
+        delay={0.22}
+        duration={1.1}
+      />
 
       <div className="pointer-events-none absolute left-1/2 top-[70px] z-[50] h-[82px] w-[1180px] -translate-x-1/2 md:h-[88px] md:w-[1260px] xl:h-[96px] xl:w-[1380px]">
         <motion.div
