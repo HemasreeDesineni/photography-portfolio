@@ -1,0 +1,23 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1600 320"
+  role="img"
+  aria-labelledby="photography-title"
+>
+  <title id="photography-title">Photography</title>
+  <text
+    x="50%"
+    y="56%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="#fffdf8"
+    font-family="Inter, Helvetica Neue, Arial, sans-serif"
+    font-size="118"
+    font-weight="700"
+    letter-spacing="26"
+    lengthAdjust="spacingAndGlyphs"
+    textLength="1120"
+  >
+    PHOTOGRAPHY
+  </text>
+</svg>

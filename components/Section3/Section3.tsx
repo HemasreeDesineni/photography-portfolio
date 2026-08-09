@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import localFont from "next/font/local";
 import { AnimatePresence, motion } from "framer-motion";
 import type { RefObject } from "react";
 import CategoryGrid from "./CategoryGrid";
@@ -10,6 +11,10 @@ import SectionContactButton from "./SectionContactButton";
 import { photographyCategories } from "./categoryData";
 
 const cinematicEase = [0.22, 1, 0.36, 1] as const;
+const copperplateTitle = localFont({
+  src: "../../app/fonts/CopperplateGothicBold.ttf",
+  display: "swap",
+});
 
 export default function Section3({
   setSection,
@@ -200,23 +205,28 @@ export default function Section3({
                 className="
                   pointer-events-none
                   absolute
-                  left-[-170px]
-                  top-[75px]
+                  left-[38.8%]
+                  top-[233px]
                   z-20
-                  h-[320px]
-                  w-[1600px]
                   -translate-x-1/2
+                  whitespace-nowrap
                   will-change-transform
                   will-change-opacity
                 "
               >
-                <Image
-                  src="/images/photography.png"
-                  alt="photography"
-                  fill
-                  // priority
-                  className="object-contain"
-                />
+                <span
+                  className={`${copperplateTitle.className} block text-[#fffdf8]`}
+                  style={{
+                    fontSize: "22px",
+                    fontWeight: 700,
+                    letterSpacing: "0.42em",
+                    lineHeight: 1,
+                    transform: "scaleX(0.72) scaleY(0.82)",
+                    transformOrigin: "center",
+                  }}
+                >
+                  PHOTOGRAPHY
+                </span>
               </motion.div>
             </div>
 

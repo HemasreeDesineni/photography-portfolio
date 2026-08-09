@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const cinematicEase = [0.22, 1, 0.36, 1] as const;
-const mobileFullscreenCoverSizes = "(max-width: 1024px) 150vh, 100vw";
 
 export default function MobileSection2() {
   return (
