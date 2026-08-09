@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 
 const cinematicEase = [0.22, 1, 0.36, 1] as const;
 const mobileFullscreenCoverSizes = "(max-width: 1024px) 100vw, 100vw";
+const mobileTopStripHeight = 92;
+const mobileTitleOverlapHeight = 20;
 
 export default function MobileHero() {
   return (
@@ -56,36 +58,43 @@ export default function MobileHero() {
         {/* TOP BAR */}
         <div className="flex h-[72px] items-center justify-between px-5">
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: -20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 1.2,
-              ease: cinematicEase,
-            }}
+          <div
             className="
               absolute
-              left-[10px]
-              top-[-4%]
+              inset-x-0
               z-50
-              -translate-x-1/2
+              flex
+              justify-center
+              px-4
             "
+            style={{
+              top: mobileTopStripHeight - mobileTitleOverlapHeight,
+            }}
           >
-            <Image
-              src="/images/hero-title.svg"
-              alt="Goutham Photography"
-              width={450}
-              height={42}
-              priority
-              unoptimized
-            />
-          </motion.div>
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: -20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 1.2,
+                ease: cinematicEase,
+              }}
+            >
+              <Image
+                src="/images/hero-title-mobile.png"
+                alt="Goutham Photography"
+                width={3816}
+                height={443}
+                priority
+                className="h-auto w-[min(90vw,360px)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]"
+              />
+            </motion.div>
+          </div>
 
         </div>
 
