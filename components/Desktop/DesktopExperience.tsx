@@ -12,10 +12,16 @@ import Section5 from "@/components/Section5/Section5";
 import {
   PHOTOS_PER_PAGE,
   photographyCategories,
+  videographyCategories,
 } from "@/components/Section3/categoryData";
 
 const SECTION_COUNT = 5;
 const SCROLLBAR_STEP_HEIGHT = 36;
+const WHEEL_GESTURE_RESET_MS = 180;
+const WHEEL_NAVIGATION_THRESHOLD = 140;
+const WHEEL_NAVIGATION_COOLDOWN_MS = 950;
+const GALLERY_SCROLL_MIN_DISTANCE = 48;
+const GALLERY_SCROLL_MAX_DISTANCE = 120;
 
 function getGalleryStepCount(photoCount: number) {
   if (photoCount <= 0) {
@@ -40,6 +46,19 @@ export default function DesktopExperience() {
   const section3GalleryViewportRef =
     useRef<HTMLDivElement | null>(null);
 
+  const [section4ActiveCategoryId, setSection4ActiveCategoryId] =
+    useState<string | null>(null);
+
+  const [section4GalleryProgress, setSection4GalleryProgress] = useState(0);
+
+  const section4GalleryViewportRef =
+    useRef<HTMLDivElement | null>(null);
+
+  const wheelAccumulatorRef = useRef(0);
+  const lastWheelDirectionRef = useRef<"up" | "down" | null>(null);
+  const lastWheelEventTimeRef = useRef(0);
+  const wheelLockUntilRef = useRef(0);
+
   const activeSection3Category = useMemo(
     () =>
       photographyCategories.find(
@@ -48,8 +67,19 @@ export default function DesktopExperience() {
     [section3ActiveCategoryId]
   );
 
+  const activeSection4Category = useMemo(
+    () =>
+      videographyCategories.find(
+        (category) => category.id === section4ActiveCategoryId
+      ) ?? null,
+    [section4ActiveCategoryId]
+  );
+
   const isSection3Expanded =
     section === 2 && section3ActiveCategoryId !== null;
+
+  const isSection4Expanded =
+    section === 3 && section4ActiveCategoryId !== null;
 
   const isSection3ModalOpen =
     section === 2 &&
@@ -61,8 +91,15 @@ export default function DesktopExperience() {
     [activeSection3Category]
   );
 
+  const section4GalleryStepCount = useMemo(
+    () => getGalleryStepCount(activeSection4Category?.photos.length ?? 0),
+    [activeSection4Category]
+  );
+
   const scrollbarStepCount = isSection3Expanded
     ? SECTION_COUNT - 1 + section3GalleryStepCount
+    : isSection4Expanded
+    ? SECTION_COUNT - 1 + section4GalleryStepCount
     : SECTION_COUNT;
 
   const scrollbarTrackHeight =
@@ -77,6 +114,12 @@ export default function DesktopExperience() {
           section3GalleryProgress *
             Math.max(section3GalleryStepCount - 1, 0)
         : section + section3GalleryStepCount - 1
+      : isSection4Expanded
+      ? section === 3
+        ? 3 +
+          section4GalleryProgress *
+            Math.max(section4GalleryStepCount - 1, 0)
+        : section + section4GalleryStepCount - 1
       : section;
 
   const resetSection3Expansion = () => {
@@ -90,15 +133,36 @@ export default function DesktopExperience() {
     });
   };
 
+  const resetSection4Expansion = () => {
+    setSection4ActiveCategoryId(null);
+    setSection4GalleryProgress(0);
+
+    section4GalleryViewportRef.current?.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  };
+
+  const lockWheelNavigation = (duration: number) => {
+    wheelLockUntilRef.current = performance.now() + duration;
+    wheelAccumulatorRef.current = 0;
+    lastWheelDirectionRef.current = null;
+  };
+
   const goToSection = (nextSection: number) => {
     if (nextSection !== 2) {
       resetSection3Expansion();
+    }
+
+    if (nextSection !== 3) {
+      resetSection4Expansion();
     }
 
     setSection(nextSection);
   };
 
   const lockNavigation = (duration: number) => {
+    lockWheelNavigation(duration);
     setIsAnimating(true);
 
     window.setTimeout(() => {
@@ -113,6 +177,11 @@ export default function DesktopExperience() {
 
   const collapseSection3Expansion = useEffectEvent(() => {
     resetSection3Expansion();
+    lockNavigation(450);
+  });
+
+  const collapseSection4Expansion = useEffectEvent(() => {
+    resetSection4Expansion();
     lockNavigation(450);
   });
 
@@ -133,11 +202,10 @@ export default function DesktopExperience() {
   );
 
   const scrollExpandedGallery = (
+    viewport: HTMLDivElement | null,
     direction: "up" | "down",
     distance: number
   ) => {
-    const viewport = section3GalleryViewportRef.current;
-
     if (!viewport) {
       return false;
     }
@@ -169,6 +237,48 @@ export default function DesktopExperience() {
 
     return true;
   };
+
+  const handleSection4Toggle = (categoryId: string) => {
+    if (section4ActiveCategoryId === categoryId) {
+      setSection4ActiveCategoryId(null);
+      setSection4GalleryProgress(0);
+
+      section4GalleryViewportRef.current?.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+
+      lockNavigation(550);
+
+      return;
+    }
+
+    setSection4ActiveCategoryId(categoryId);
+    setSection4GalleryProgress(0);
+
+    lockNavigation(550);
+  };
+
+  const normalizeWheelDelta = (event: WheelEvent) => {
+    if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
+      return event.deltaY * 16;
+    }
+
+    if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+      return event.deltaY * window.innerHeight;
+    }
+
+    return event.deltaY;
+  };
+
+  const getGalleryScrollDistance = (delta: number) =>
+    Math.min(
+      GALLERY_SCROLL_MAX_DISTANCE,
+      Math.max(
+        GALLERY_SCROLL_MIN_DISTANCE,
+        Math.abs(delta) * 0.28
+      )
+    );
 
   const handleSection3Toggle = (categoryId: string) => {
     if (section3ActiveCategoryId === categoryId) {
@@ -229,38 +339,78 @@ export default function DesktopExperience() {
 
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
-      if (e.deltaY === 0) return;
+      const normalizedDelta = normalizeWheelDelta(e);
+
+      if (normalizedDelta === 0) return;
+
+      e.preventDefault();
+
+      const now = performance.now();
+
+      if (now < wheelLockUntilRef.current) {
+        return;
+      }
 
       const direction =
-        e.deltaY > 0 ? "down" : "up";
+        normalizedDelta > 0 ? "down" : "up";
+
+      const activeGalleryViewport =
+        section === 2
+          ? section3GalleryViewportRef.current
+          : section === 3
+          ? section4GalleryViewportRef.current
+          : null;
+
+      const isExpandedGallery =
+        (section === 2 && section3ActiveCategoryId !== null) ||
+        (section === 3 && section4ActiveCategoryId !== null);
 
       if (
-        section === 2 &&
-        section3ActiveCategoryId &&
+        isExpandedGallery &&
+        activeGalleryViewport &&
         !isSection3ModalOpen
       ) {
-        const scrollDistance = Math.max(
-          150,
-          Math.min(360, Math.abs(e.deltaY) * 1.15)
-        );
+        const scrollDistance =
+          getGalleryScrollDistance(normalizedDelta);
 
         if (
           scrollExpandedGallery(
+            activeGalleryViewport,
             direction,
             scrollDistance
           )
         ) {
-          e.preventDefault();
           return;
         }
 
         if (direction === "up") {
-          e.preventDefault();
-          collapseSection3Expansion();
+          if (section === 2) {
+            collapseSection3Expansion();
+          } else {
+            collapseSection4Expansion();
+          }
           return;
         }
       }
 
+      if (
+        now - lastWheelEventTimeRef.current > WHEEL_GESTURE_RESET_MS ||
+        lastWheelDirectionRef.current !== direction
+      ) {
+        wheelAccumulatorRef.current = 0;
+      }
+
+      lastWheelEventTimeRef.current = now;
+      lastWheelDirectionRef.current = direction;
+      wheelAccumulatorRef.current += Math.abs(normalizedDelta);
+
+      if (wheelAccumulatorRef.current < WHEEL_NAVIGATION_THRESHOLD) {
+        return;
+      }
+
+      wheelAccumulatorRef.current = 0;
+      wheelLockUntilRef.current =
+        now + WHEEL_NAVIGATION_COOLDOWN_MS;
       navigateBetweenSections(direction);
     };
 
@@ -275,6 +425,7 @@ export default function DesktopExperience() {
     isSection3ModalOpen,
     section,
     section3ActiveCategoryId,
+    section4ActiveCategoryId,
   ]);
 
   useEffect(() => {
@@ -289,7 +440,23 @@ export default function DesktopExperience() {
         if (
             section === 2 &&
             section3ActiveCategoryId &&
-            scrollExpandedGallery("down", 320)
+            scrollExpandedGallery(
+              section3GalleryViewportRef.current,
+              "down",
+              120
+            )
+        ) {
+            return;
+        }
+
+        if (
+            section === 3 &&
+            section4ActiveCategoryId &&
+            scrollExpandedGallery(
+              section4GalleryViewportRef.current,
+              "down",
+              120
+            )
         ) {
             return;
         }
@@ -303,7 +470,11 @@ export default function DesktopExperience() {
         if (
             section === 2 &&
             section3ActiveCategoryId &&
-            scrollExpandedGallery("up", 320)
+            scrollExpandedGallery(
+              section3GalleryViewportRef.current,
+              "up",
+              120
+            )
         ) {
             return;
         }
@@ -313,6 +484,26 @@ export default function DesktopExperience() {
             section3ActiveCategoryId
         ) {
             collapseSection3Expansion();
+            return;
+        }
+
+        if (
+            section === 3 &&
+            section4ActiveCategoryId &&
+            scrollExpandedGallery(
+              section4GalleryViewportRef.current,
+              "up",
+              120
+            )
+        ) {
+            return;
+        }
+
+        if (
+            section === 3 &&
+            section4ActiveCategoryId
+        ) {
+            collapseSection4Expansion();
             return;
         }
 
@@ -329,6 +520,7 @@ export default function DesktopExperience() {
     isSection3ModalOpen,
     section,
     section3ActiveCategoryId,
+    section4ActiveCategoryId,
     ]);
 
   useEffect(() => {
@@ -341,6 +533,17 @@ export default function DesktopExperience() {
       behavior: "auto",
     });
   }, [section3ActiveCategoryId]);
+
+  useEffect(() => {
+    if (!section4ActiveCategoryId) {
+      return;
+    }
+
+    section4GalleryViewportRef.current?.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, [section4ActiveCategoryId]);
 
   return (
     <main className="relative h-screen w-full overflow-hidden">
@@ -481,7 +684,13 @@ export default function DesktopExperience() {
             transition={{ duration: 0.7 }}
             className="absolute inset-0"
           >
-            <Section4 setSection={goToSection} />
+            <Section4
+              setSection={goToSection}
+              activeCategoryId={section4ActiveCategoryId}
+              galleryViewportRef={section4GalleryViewportRef}
+              onGalleryProgressChange={setSection4GalleryProgress}
+              onToggleCategory={handleSection4Toggle}
+            />
           </motion.div>
         )}
 

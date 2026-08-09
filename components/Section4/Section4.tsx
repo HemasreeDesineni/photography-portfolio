@@ -2,16 +2,57 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { RefObject } from "react";
+import CategoryFeed from "../Section3/CategoryFeed";
 import CategoryGrid from "../Section3/CategoryGrid";
 import SectionContactButton from "../Section3/SectionContactButton";
+import { videographyCategories } from "../Section3/categoryData";
 
 const section4Ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Section4({
   setSection,
+  activeCategoryId,
+  galleryViewportRef,
+  onGalleryProgressChange,
+  onToggleCategory,
 }: {
   setSection: (n: number) => void;
+  activeCategoryId: string | null;
+  galleryViewportRef: RefObject<HTMLDivElement | null>;
+  onGalleryProgressChange: (progress: number) => void;
+  onToggleCategory: (id: string) => void;
 }) {
+  const activeCategory =
+    videographyCategories.find(
+      (category) => category.id === activeCategoryId
+    ) ?? null;
+
+  const isExpanded = activeCategory !== null;
+
+  const handleGalleryScroll = () => {
+    const viewport = galleryViewportRef.current;
+
+    if (!viewport) {
+      onGalleryProgressChange(0);
+      return;
+    }
+
+    const maxScrollTop = Math.max(
+      0,
+      viewport.scrollHeight - viewport.clientHeight
+    );
+
+    if (maxScrollTop <= 0) {
+      onGalleryProgressChange(0);
+      return;
+    }
+
+    onGalleryProgressChange(
+      Math.min(1, Math.max(0, viewport.scrollTop / maxScrollTop))
+    );
+  };
+
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#3d381b]">
       <motion.div
@@ -44,16 +85,45 @@ export default function Section4({
         </motion.div>
       </div>
 
-      <div className="absolute left-1/2 top-[180px] z-[40] w-full max-w-[1520px] -translate-x-1/2 px-6">
+      {isExpanded ? (
         <motion.div
-          initial={{ opacity: 0, y: 34, scale: 0.985, filter: "blur(14px)" }}
-          animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, delay: 0.2, ease: section4Ease }}
-          className="h-[calc(100vh-230px)]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.45, ease: section4Ease }}
+          className="absolute inset-0 flex h-full flex-col"
         >
-          <CategoryGrid />
+          <div
+            ref={galleryViewportRef}
+            onScroll={handleGalleryScroll}
+            className="hide-scrollbar relative z-[40] h-full w-full overflow-y-auto overflow-x-hidden pt-[170px]"
+          >
+            <CategoryFeed
+              title={activeCategory.galleryTitle}
+              titleImage={activeCategory.galleryTitleImage}
+              titleScale={activeCategory.galleryTitleScale}
+              photos={activeCategory.photos}
+              onPhotoClick={() => {}}
+              immersive
+            />
+          </div>
         </motion.div>
-      </div>
+      ) : (
+        <div className="absolute left-1/2 top-[180px] z-[40] w-full max-w-[1520px] -translate-x-1/2 px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 34, scale: 0.985, filter: "blur(14px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.9, delay: 0.2, ease: section4Ease }}
+            className="h-[calc(100vh-230px)]"
+          >
+            <CategoryGrid
+              categories={videographyCategories}
+              activeId={activeCategoryId}
+              onToggleCategory={onToggleCategory}
+            />
+          </motion.div>
+        </div>
+      )}
 
       <motion.button
         onClick={() => setSection(0)}
