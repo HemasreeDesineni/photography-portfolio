@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import localFont from "next/font/local";
 import type { RefObject } from "react";
 import CategoryFeed from "../Section3/CategoryFeed";
 import CategoryGrid from "../Section3/CategoryGrid";
@@ -9,6 +9,10 @@ import SectionContactButton from "../Section3/SectionContactButton";
 import { videographyCategories } from "../Section3/categoryData";
 
 const section4Ease = [0.22, 1, 0.36, 1] as const;
+const copperplateTitle = localFont({
+  src: "../../app/fonts/CopperplateGothicBold.ttf",
+  display: "swap",
+});
 
 export default function Section4({
   setSection,
@@ -68,22 +72,26 @@ export default function Section4({
         duration={1.1}
       />
 
-      <div className="pointer-events-none absolute left-1/2 top-[70px] z-[50] h-[82px] w-[1180px] -translate-x-1/2 md:h-[88px] md:w-[1260px] xl:h-[96px] xl:w-[1380px]">
-        <motion.div
-          initial={{ opacity: 0, y: -24, scale: 0.96, filter: "blur(12px)" }}
-          animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.82, delay: 0.14, ease: section4Ease }}
-          className="relative h-full w-full"
+      <motion.div
+        initial={{ opacity: 0, y: 25, scale: 0.7, filter: "blur(16px)" }}
+        animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+        transition={{ duration: 2, delay: 0.25, ease: section4Ease }}
+        className="pointer-events-none absolute left-[40%] top-[104px] z-[50] -translate-x-1/2 whitespace-nowrap"
+      >
+        <span
+          className={`${copperplateTitle.className} block text-[#fffdf8]`}
+          style={{
+            fontSize: "22px",
+            fontWeight: 700,
+            letterSpacing: "0.42em",
+            lineHeight: 1,
+            transform: "scaleX(0.72) scaleY(0.82)",
+            transformOrigin: "center",
+          }}
         >
-          <Image
-            src="/images/videography.png"
-            alt="videography"
-            fill
-            sizes="(max-width: 1536px) calc(100vw - 48px), 1380px"
-            className="object-cover opacity-90"
-          />
-        </motion.div>
-      </div>
+          VIDEOGRAPHY
+        </span>
+      </motion.div>
 
       {isExpanded ? (
         <motion.div
