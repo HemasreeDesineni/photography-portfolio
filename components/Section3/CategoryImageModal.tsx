@@ -407,6 +407,14 @@ export default function CategoryImageModal({
   }, []);
 
   useEffect(() => {
+    dragStateRef.current = null;
+    setIsDragging(false);
+    setZoom(1);
+    setOffset(ORIGIN);
+    setImageAspectRatio(null);
+  }, [photo.src]);
+
+  useEffect(() => {
     const onResize = () => {
       setOffset((currentOffset) =>
         clampOffset(
