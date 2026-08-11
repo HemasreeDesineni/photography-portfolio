@@ -51,6 +51,16 @@ const createNumberedPhotos = (
     Array.from({ length: total }, (_, index) => `${index + 1}.jpg`),
   );
 
+const createRemoteNumberedPhotos = (
+  category: string,
+  total: number,
+  getSrc: (index: number) => string,
+): CategoryPhoto[] =>
+  createCategoryPhotos(
+    category,
+    Array.from({ length: total }, (_, index) => getSrc(index + 1)),
+  );
+
 export const photographyCategories: CategoryDefinition[] = [
   {
     id: "conceptual",
@@ -65,7 +75,12 @@ export const photographyCategories: CategoryDefinition[] = [
     image: "/images/conceptual.jpg",
     zoom: 1,
     position: "center",
-    photos: createNumberedPhotos("conceptual", 30),
+    photos: createRemoteNumberedPhotos(
+      "conceptual",
+      30,
+      (index) =>
+        `https://ik.imagekit.io/n5jyosnt1/portfolio/photography/conceptual/conceptual-${index}.jpg`,
+    ),
   },
   {
     id: "arangetram",
@@ -109,7 +124,12 @@ export const photographyCategories: CategoryDefinition[] = [
     image: "/images/performances.jpg",
     zoom: 1.2,
     position: "center top",
-    photos: createNumberedPhotos("performances", 25),
+    photos: createRemoteNumberedPhotos(
+      "performances",
+      25,
+      (index) =>
+        `https://ik.imagekit.io/n5jyosnt1/portfolio/photography/performances/performance-${index}.jpg`,
+    ),
   },
 ];
 
