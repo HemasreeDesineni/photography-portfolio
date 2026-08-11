@@ -16,7 +16,6 @@ import {
 } from "@/components/Section3/categoryData";
 
 const SECTION_COUNT = 5;
-const SCROLLBAR_STEP_HEIGHT = 36;
 const WHEEL_GESTURE_RESET_MS = 180;
 const WHEEL_NAVIGATION_THRESHOLD = 140;
 const WHEEL_NAVIGATION_COOLDOWN_MS = 950;
@@ -38,7 +37,7 @@ export default function DesktopExperience() {
   const [section3ActiveCategoryId, setSection3ActiveCategoryId] =
     useState<string | null>(null);
 
-  const [section3GalleryProgress, setSection3GalleryProgress] = useState(0);
+  const [, setSection3GalleryProgress] = useState(0);
 
   const [section3ModalPhotoIndex, setSection3ModalPhotoIndex] =
     useState<number | null>(null);
@@ -49,7 +48,7 @@ export default function DesktopExperience() {
   const [section4ActiveCategoryId, setSection4ActiveCategoryId] =
     useState<string | null>(null);
 
-  const [section4GalleryProgress, setSection4GalleryProgress] = useState(0);
+  const [, setSection4GalleryProgress] = useState(0);
 
   const section4GalleryViewportRef =
     useRef<HTMLDivElement | null>(null);
@@ -85,42 +84,6 @@ export default function DesktopExperience() {
     section === 2 &&
     section3ModalPhotoIndex !== null &&
     activeSection3Category !== null;
-
-  const section3GalleryStepCount = useMemo(
-    () => getGalleryStepCount(activeSection3Category?.photos.length ?? 0),
-    [activeSection3Category]
-  );
-
-  const section4GalleryStepCount = useMemo(
-    () => getGalleryStepCount(activeSection4Category?.photos.length ?? 0),
-    [activeSection4Category]
-  );
-
-  const scrollbarStepCount = isSection3Expanded
-    ? SECTION_COUNT - 1 + section3GalleryStepCount
-    : isSection4Expanded
-    ? SECTION_COUNT - 1 + section4GalleryStepCount
-    : SECTION_COUNT;
-
-  const scrollbarTrackHeight =
-    scrollbarStepCount * SCROLLBAR_STEP_HEIGHT;
-
-  const currentScrollbarIndex =
-    section < 2
-      ? section
-      : isSection3Expanded
-      ? section === 2
-        ? 2 +
-          section3GalleryProgress *
-            Math.max(section3GalleryStepCount - 1, 0)
-        : section + section3GalleryStepCount - 1
-      : isSection4Expanded
-      ? section === 3
-        ? 3 +
-          section4GalleryProgress *
-            Math.max(section4GalleryStepCount - 1, 0)
-        : section + section4GalleryStepCount - 1
-      : section;
 
   const resetSection3Expansion = () => {
     setSection3ActiveCategoryId(null);
@@ -547,35 +510,6 @@ export default function DesktopExperience() {
 
   return (
     <main className="relative h-screen w-full overflow-hidden">
-      <div className="fixed right-3 top-1/2 z-[999] -translate-y-1/2">
-        <motion.div
-          animate={{
-            height: scrollbarTrackHeight,
-          }}
-          transition={{
-            duration: 0.45,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="w-[4px] overflow-hidden rounded-full bg-white/20"
-        >
-          <motion.div
-            animate={{
-              y:
-                currentScrollbarIndex *
-                SCROLLBAR_STEP_HEIGHT,
-            }}
-            transition={{
-              duration: 0.45,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="w-full rounded-full bg-white"
-            style={{
-              height: SCROLLBAR_STEP_HEIGHT,
-            }}
-          />
-        </motion.div>
-      </div>
-
       <AnimatePresence mode="sync">
         {section === 0 && (
           <motion.div
